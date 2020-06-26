@@ -21,7 +21,8 @@ class Login extends React.Component {
 
     return (
       <Segment>
-        <Header as='h1' textAlign='center'>Login</Header>
+        <Header as='h1' textAlign='center'>Run Social</Header>
+        <Header as='h3' textAlign='center'>Login</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
           label='Email'
@@ -36,6 +37,7 @@ class Login extends React.Component {
           label='Password'
           required
           name='password'
+          type='password'
           value={password}
           placeholder='Password'
           onChange={this.handleChange}
