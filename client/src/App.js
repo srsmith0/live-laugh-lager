@@ -9,6 +9,8 @@ import { Switch, Route } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
+import ReviewForm from './posts/ReviewForm';
+import PostForm from './posts/PostForm';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <ProtectedRoute exact path='/' component={Home} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
+        <Route exact path='/review' component={ReviewForm} />
+        <Route exact path='/post' component={PostForm} />
         <Route component={NoMatch} /> 
       </Switch>
     </Container>

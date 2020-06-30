@@ -1,6 +1,9 @@
 import React from 'react';
 import { Header, Menu, Dropdown, Grid, Segment } from 'semantic-ui-react';
+import ReviewForm from '../posts/ReviewForm';
 
+//This is the landing page for users.  It should show their feed (includes their posts, and other users)
+// option to create a post/review, and find a brewery
 export default class Home extends React.Component {
   state = { activeItem: 'feed' }
 
@@ -11,13 +14,12 @@ export default class Home extends React.Component {
 
   return (
     <div>
-  <Header style={{margin:"20px"}} as='h1'>Run Social</Header>
-     
+  <Header style={{margin:"20px"}} as='h1'>Beer Review</Header>
   <Menu vertical floated="right">
   <Dropdown item icon='add'text='Add'>
     <Dropdown.Menu>
+      <Dropdown.Item>Review</Dropdown.Item>
       <Dropdown.Item>Post</Dropdown.Item>
-      <Dropdown.Item>Activity</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
 </Menu>
@@ -37,8 +39,8 @@ export default class Home extends React.Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
-              name='companies'
-              active={activeItem === 'companies'}
+              name='find breweries'
+              active={activeItem === 'find breweries'}
               onClick={this.handleItemClick}
             />
             <Menu.Item

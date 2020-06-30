@@ -11,12 +11,8 @@ class NavBar extends React.Component {
        return (
          <Menu.Menu position="right">
             <Menu.Item 
-            name="My Runs"
+            name="My Feed"
             //active={location.pathname === '/user_runs' }
-           />
-            <Menu.Item 
-            name="Add Post"
-            
            />
            <Menu.Item 
             name="Logout"

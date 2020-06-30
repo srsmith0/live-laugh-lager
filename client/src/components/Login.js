@@ -4,7 +4,7 @@ import { Button, Form, Segment, Header } from 'semantic-ui-react';
 
 class Login extends React.Component {
 
-  state = { email: '', password: '' }
+  state = { email: 'test@test.com', password: '123456' }
 
   handleSubmit = (e) => {
     const { email, password } = this.state;
@@ -21,7 +21,8 @@ class Login extends React.Component {
 
     return (
       <Segment>
-        <Header as='h1' textAlign='center'>Run Social</Header>
+        <Header as='h1' textAlign='center'>Five'o'Clock</Header>
+        <Header as='h2' textAlign='center'>Beer Review</Header>
         <Header as='h3' textAlign='center'>Login</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
