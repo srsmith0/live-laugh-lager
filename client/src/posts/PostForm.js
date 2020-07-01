@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form } from '../components/Form';
 import TextInput from '../components/TextInput';
 import { useFormInput }from '../customHooks/useFormInput';
+import { Button } from 'semantic-ui-react';
 
 export default function PostForm (props) {
   const title = useFormInput ('', 'title');
@@ -13,8 +14,11 @@ export default function PostForm (props) {
   
   return(
     <Form header="Add a Post" onSubmit={handleSubmit}>
-      <TextInput label="title" useFormInput={title} />
-      <TextInput label="content" useFormInput={content} textarea />
+      <TextInput label="Title" useFormInput={title} />
+      <br />
+      <TextInput label="Content" useFormInput={content} textarea />
+      <Button style={{marginTop:"10px"}}>Submit</Button>
+      
     </Form>
   )
 }

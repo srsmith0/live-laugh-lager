@@ -4,7 +4,7 @@ import { Button, Form, Segment, Header } from 'semantic-ui-react';
 
 class Login extends React.Component {
 
-  state = { email: 'test@test.com', password: '123456' }
+  state = { email: '0-test@test.com', password: '123456' }
 
   handleSubmit = (e) => {
     const { email, password } = this.state;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Home from './components/Home';
+import Profile from './profile/Profile';
 import NavBar from './components/NavBar';
 import NoMatch from './components/NoMatch';
 import Login from './components/Login';
@@ -11,6 +11,7 @@ import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import ReviewForm from './posts/ReviewForm';
 import PostForm from './posts/PostForm';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
     <FetchUser>
     <Container >
       <Switch>
-        <ProtectedRoute exact path='/' component={Home} />
+        <Route exact path ='/' component={Home} />
+        <ProtectedRoute exact path='/profile' component={Profile} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/review' component={ReviewForm} />

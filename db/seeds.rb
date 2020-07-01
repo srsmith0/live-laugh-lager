@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+5.times do |x|
+  user = User.create(email: "#{x}-test@test.com", password: "123456", name: "brew-boi#{x}")
+  2.times do |y|
+    user.posts.create(title: "#{y}-title", content: "balkjskejklsdf")
+    4.times do |r|
+      user.reviews.create(name:"mosaic/citra BS Haze-#{r}", brewery: "hype-brewery-#{r}", style: 'stupid hazy', 
+      description: "another hazy, mosaic/citra...very original #{r}", appearance: rand(1..5), aroma: rand(1..5),
+      flavor: rand(1..5), mouthfeel: rand(1..5), overall: rand(1..5))
+    end
+  end
+end
+
+puts "seeded!"

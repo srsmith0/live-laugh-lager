@@ -10,10 +10,6 @@ class NavBar extends React.Component {
      if (user) {
        return (
          <Menu.Menu position="right">
-            <Menu.Item 
-            name="My Feed"
-            //active={location.pathname === '/user_runs' }
-           />
            <Menu.Item 
             name="Logout"
             onClick={() => handleLogout(this.props.history) }
@@ -48,13 +44,21 @@ class NavBar extends React.Component {
    render () {
      return (
        <div>
-         <Menu pointing secondary>
-           <Link to='/'>
+         <Menu pointing secondary style={background} >
+         <Link to='/'>
              <Menu.Item 
               id='home'
               name='Home'
               icon="home"
               active={this.props.location.pathname === '/'}
+             />
+           </Link>
+           <Link to='/profile'>
+             <Menu.Item 
+              id='profile'
+              name='Profile'
+              icon="beer"
+              active={this.props.location.pathname === '/profile'}
              />
            </Link>
             { this.rightNavItems() }
@@ -76,3 +80,8 @@ class ConnectedNavBar extends React.Component {
 
 export default withRouter(ConnectedNavBar);
 
+const background = {
+  background: "rgb(242,188,21)",
+  background: "linear-gradient(0deg, rgba(242,188,21,1) 46%, rgba(252,234,193,1) 89%)",
+  
+}
