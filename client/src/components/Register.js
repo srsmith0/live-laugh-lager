@@ -25,7 +25,7 @@ class Register extends React.Component {
 
     return (
       <Segment>
-        <Header as='h1' textAlign='center'>Run Social</Header>
+        <Header as='h1' textAlign='center'>Five 'o' Clock</Header>
         <Header as='h3' textAlign='center'>Register</Header>
         <Form onSubmit={this.handleSubmit}>
         <Form.Input
