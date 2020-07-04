@@ -1,14 +1,33 @@
 import React from 'react';
 import { Header, Menu, Dropdown, Grid, Segment } from 'semantic-ui-react';
-import ReviewForm from '../posts/ReviewForm';
 import { Link } from 'react-router-dom';
+import { AuthConsumer } from '../providers/AuthProvider';
+import PostList from '../posts/PostList';
 
-//This is the landing page for users.  It should show their feed (includes their posts, and other users)
-// option to create a post/review, and find a brewery
 export default class Profile extends React.Component {
-  state = { activeItem: 'feed' }
+  state = { activeItem: 'feed', activeInfo: 'posts'};
+
+  //how to set state with multiple keys AND using AuthContext?
+  //will need to set activeInfo state to followee's posts/reviews
+
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  // setInfo = ({}) => this.setState({ activeInfo })
+
+  renderMyPosts () {
+    return (
+      <PostList props={this.props} />
+    )
+  }
+
+  renderAllPosts () {
+    
+  }
+
+  renderFollowers () {
+
+  }
 
   render() {
     const { activeItem } = this.state
@@ -16,14 +35,6 @@ export default class Profile extends React.Component {
   return (
     <div>
   <Header style={{margin:"20px", textAlign:"center"}} as='h1'>Five 'o' Clock</Header>
-  <Menu vertical floated="right">
-  <Dropdown item icon='add'text='Add'>
-    <Dropdown.Menu>
-      <Dropdown.Item as={Link} to='/review'>Review</Dropdown.Item>
-      <Dropdown.Item as={Link} to='/post'>Post</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-</Menu>
   <Grid>
         <Grid.Column width={4}>
           <Menu fluid vertical tabular>
@@ -40,32 +51,42 @@ export default class Profile extends React.Component {
               onClick={this.handleItemClick}
             />
             <Menu.Item
+              icon='find'
               name='find breweries'
               active={activeItem === 'find breweries'}
               onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='links'
-              active={activeItem === 'links'}
-              onClick={this.handleItemClick}
-            />
+            /> 
+            <Dropdown item icon='add'text='Add'>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to='/review'>Review</Dropdown.Item>
+                <Dropdown.Item as={Link} to='/post'>Post</Dropdown.Item>
+               </Dropdown.Menu>
+            </Dropdown>
           </Menu>
         </Grid.Column>
 
         <Grid.Column stretched width={12}>
           <Segment>
-            This is an stretched grid column. This segment will always match the
-            tab height
+            {this.renderMyPosts()}
           </Segment>
         </Grid.Column>
       </Grid>
 
 </div>
   )
-  //put user_id feed of posts here
 
   }
 };
+
+class ConnectedProfile extends React.Component {
+  render () {
+    return (
+      <AuthConsumer>
+        { (auth) => <Profile {...this.props} auth={auth} />}
+      </AuthConsumer>
+    )
+  }
+}
 
 
 // const background = {

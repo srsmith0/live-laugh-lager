@@ -12,6 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import ReviewForm from './posts/ReviewForm';
 import PostForm from './posts/PostForm';
 import Home from './components/Home';
+import PostList from './posts/PostList';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Switch>
         <Route exact path ='/' component={Home} />
         <ProtectedRoute exact path='/profile' component={Profile} />
+        <ProtectedRoute exact path='/posts' component={PostList} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/review' component={ReviewForm} />

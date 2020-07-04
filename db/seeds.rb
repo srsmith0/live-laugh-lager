@@ -8,8 +8,8 @@
 
 5.times do |x|
   user = User.create(email: "#{x}-test@test.com", password: "123456", name: "brew-boi#{x}")
-  3.times do |y|
-    post = user.posts.create(title: "#{y}-title", content: "balkjskejklsdf")
+  8.times do |y|
+    post = user.posts.create(title: "#{y}-title", content: Faker::Hipster.sentence)
     post.comments.create(content: Faker::TvShows::DumbAndDumber.quote, likes: rand(1..100), user_id: user.id, post_id: post.id)
     4.times do |r|
       user.reviews.create(name: Faker::Beer.name, brewery: "hype-brewery-#{r}", style: Faker::Beer.style, 
