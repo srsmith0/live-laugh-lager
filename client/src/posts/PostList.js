@@ -24,6 +24,7 @@ export default function PostList (props) {
   let sortedPosts = posts.sort((a, b) => b.id - a.id)
 
   //need to pass user_id and id to ShowPost...but how?
+  //small change, trying to push to github
   return (
     sortedPosts.map((p) => (
      <div key={p.id}>
