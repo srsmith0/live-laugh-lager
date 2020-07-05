@@ -22,12 +22,13 @@ export default class Profile extends React.Component {
   }
 
   renderAllPosts () {
-    
+
   }
 
   renderFollowers () {
 
   }
+
 
   render() {
     const { activeItem } = this.state
@@ -58,8 +59,8 @@ export default class Profile extends React.Component {
             /> 
             <Dropdown item icon='add'text='Add'>
               <Dropdown.Menu>
-                <Dropdown.Item as={Link} to='/review'>Review</Dropdown.Item>
-                <Dropdown.Item as={Link} to='/post'>Post</Dropdown.Item>
+                <Dropdown.Item as={Link} to='/review' props={this.props}>Review</Dropdown.Item>
+                <Dropdown.Item as={Link} to='/post' props={this.props}>Post</Dropdown.Item>
                </Dropdown.Menu>
             </Dropdown>
           </Menu>
