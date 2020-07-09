@@ -4,23 +4,26 @@ import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
 
-export default class Profile extends React.Component {
+class Profile extends React.Component {
   state = { activeItem: 'feed'};
+ 
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   renderMyPosts = () => {
     return (
-      <PostList props={this.props} />
+      //try to pass user id to Post List here
+      <PostList user_id={this.props.auth.user}/>
     )
   }
 
   renderAllPosts () {
-
+    //TODO list posts of followers and own posts
   }
 
   renderFollowers () {
     return (
+      //TODO list followers
       <div>
         <h1>Finish the function!</h1>
       </div>
@@ -98,6 +101,8 @@ class ConnectedProfile extends React.Component {
     )
   }
 }
+
+export default ConnectedProfile
 
 
 // const background = {

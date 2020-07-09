@@ -6,7 +6,6 @@ import NoMatch from './components/NoMatch';
 import Login from './components/Login';
 import Register from './components/Register';
 import { Switch, Route } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
 import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 import ReviewForm from './posts/ReviewForm';
