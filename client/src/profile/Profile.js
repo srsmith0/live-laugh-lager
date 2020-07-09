@@ -5,17 +5,11 @@ import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
 
 export default class Profile extends React.Component {
-  state = { activeItem: 'feed', activeInfo: 'posts'};
-
-  //how to set state with multiple keys AND using AuthContext?
-  //will need to set activeInfo state to followee's posts/reviews
-
+  state = { activeItem: 'feed'};
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  // setInfo = ({}) => this.setState({ activeInfo })
-
-  renderMyPosts () {
+  renderMyPosts = () => {
     return (
       <PostList props={this.props} />
     )
@@ -26,16 +20,32 @@ export default class Profile extends React.Component {
   }
 
   renderFollowers () {
-
+    return (
+      <div>
+        <h1>Finish the function!</h1>
+      </div>
+    )
   }
 
+  renderOptions (activeItem) {
+    switch (activeItem) {
+      case "feed":
+        return this.renderMyPosts()
+
+        case "followers":
+        return this.renderFollowers()
+
+        default: 
+        return this.renderMyPosts()
+    }
+  }
 
   render() {
     const { activeItem } = this.state
 
   return (
     <div>
-  <Header style={{margin:"20px", textAlign:"center"}} as='h1'>Five 'o' Clock</Header>
+  <Header style={{margin:"20px", textAlign:"center"}} as='h1'>Live, Laugh, Lager</Header>
   <Grid>
         <Grid.Column width={4}>
           <Menu fluid vertical tabular>
@@ -54,7 +64,7 @@ export default class Profile extends React.Component {
             <Menu.Item
               icon='find'
               name='find breweries'
-              active={activeItem === 'find breweries'}
+              active={activeItem === 'breweries'}
               onClick={this.handleItemClick}
             /> 
             <Dropdown item icon='add'text='Add'>
@@ -68,7 +78,7 @@ export default class Profile extends React.Component {
 
         <Grid.Column stretched width={12}>
           <Segment>
-            {this.renderMyPosts()}
+            {this.renderOptions(activeItem)}
           </Segment>
         </Grid.Column>
       </Grid>

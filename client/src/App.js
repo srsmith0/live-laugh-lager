@@ -20,7 +20,6 @@ function App() {
     <>
     <NavBar />
     <FetchUser>
-    <Container >
       <Switch>
         <Route exact path ='/' component={Home} />
         <ProtectedRoute exact path='/profile' component={Profile} />
@@ -32,7 +31,6 @@ function App() {
         <Route exact path='/showPost' component={ShowPost} />
         <Route component={NoMatch} /> 
       </Switch>
-    </Container>
     </FetchUser>
     </>
   );
