@@ -27,7 +27,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <ProtectedRoute exact path='/review' component={ReviewForm} />
         <ProtectedRoute exact path='/post' component={PostForm} />
-        <Route exact path='/showPost' component={ShowPost} />
+        <Route exact path='/post/:id' component={ShowPost} />
         <Route component={NoMatch} /> 
       </Switch>
     </FetchUser>

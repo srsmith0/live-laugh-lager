@@ -1,6 +1,7 @@
 class Api::CommentsController < ApplicationController
   def index
-    render json: Comment.find(params[:post_id])
+    post = Post.find(params[:post_id])
+    render json: post.comments.all
   end
 
   def create
