@@ -29,7 +29,7 @@ export default function PostList ({user_id}) {
     sortedPosts.map((p) => (
      <div key={p.id}>
        <h1><Link to={{
-         pathname:'/showPost', 
+         pathname:`/post/${p.id}`, 
          showProps: { ...p}
          }}>
           {p.title}
