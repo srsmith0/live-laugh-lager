@@ -13,6 +13,7 @@ import PostForm from './posts/PostForm';
 import Home from './components/Home';
 import PostList from './posts/PostList';
 import ShowPost from './posts/ShowPost';
+import Settings from './profile/Settings';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
     <FetchUser>
       <Switch>
         <Route exact path ='/' component={Home} />
+        <ProtectedRoute exact path='/settings' component={Settings} />
         <ProtectedRoute exact path='/profile' component={Profile} />
         <ProtectedRoute exact path='/posts' component={PostList} />
         <Route exact path='/login' component={Login} />
