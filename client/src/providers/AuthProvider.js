@@ -33,11 +33,16 @@ export default class AuthProvider extends React.Component {
     axios.delete("/api/auth/sign_out")
     .then((res) => {
       this.setState({ user: null });
-      history.push("/login")
+      history.push("/")
     }).catch((err) => {
       console.log(err)
       alert("Logout Failed")
     })
+  }
+
+  handleEdit = (user) => {
+    axios.put(`/api/users/${user.id}`, user)
+    .then( res => this.setState({ user: user })) 
   }
 
   render() {
@@ -47,6 +52,7 @@ export default class AuthProvider extends React.Component {
       handleRegister: this.handleRegister,
       handleLogin: this.handleLogin,
       handleLogout: this.handleLogout,
+      handleEdit: this.handleEdit,
       setUser: (user) => this.setState({ user }),
       }}>
         { this.props.children}

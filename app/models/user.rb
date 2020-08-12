@@ -2,9 +2,9 @@
 
 class User < ActiveRecord::Base
   extend Devise::Models
-  has_many :posts
-  has_many :reviews 
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :reviews, dependent: :destroy 
+  has_many :comments, dependent: :destroy
 
   
   # Include default devise modules. Others available are:

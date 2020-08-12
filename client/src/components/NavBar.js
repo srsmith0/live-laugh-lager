@@ -42,6 +42,7 @@ class NavBar extends React.Component {
    }
 
    render () {
+     if (this.props.auth.user){
      return (
        <div>
          <Menu pointing secondary style={background} >
@@ -65,7 +66,24 @@ class NavBar extends React.Component {
          </Menu>
        </div>
      )
+   } else {
+     return (
+       <div>
+         <Menu pointing secondary style={background} >
+         <Link to='/'>
+             <Menu.Item 
+              id='home'
+              name='Home'
+              icon="home"
+              active={this.props.location.pathname === '/'}
+             />
+           </Link>
+           { this.rightNavItems() }
+           </Menu>
+       </div>
+     )
    }
+} 
 }
 
 class ConnectedNavBar extends React.Component {
