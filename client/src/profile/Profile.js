@@ -3,6 +3,7 @@ import { Header, Menu, Dropdown, Grid, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
+import Settings from './Settings'
 
 class Profile extends React.Component {
   state = { activeItem: 'feed'};
@@ -30,6 +31,10 @@ class Profile extends React.Component {
     )
   }
 
+  renderSettings () {
+    return  <Settings />
+  }
+
   renderOptions (activeItem) {
     switch (activeItem) {
       case "feed":
@@ -37,6 +42,9 @@ class Profile extends React.Component {
 
         case "followers":
         return this.renderFollowers()
+
+        case "settings":
+          return this.renderSettings()
 
         default: 
         return this.renderMyPosts()
@@ -76,6 +84,12 @@ class Profile extends React.Component {
                 <Dropdown.Item as={Link} to='/post' props={this.props}>Post</Dropdown.Item>
                </Dropdown.Menu>
             </Dropdown>
+           <Menu.Item
+            name='settings'
+            icon='settings'
+            active={activeItem === 'settings'}
+            onClick={this.handleItemClick}
+            />
           </Menu>
         </Grid.Column>
 

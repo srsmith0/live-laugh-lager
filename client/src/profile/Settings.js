@@ -26,6 +26,10 @@ function removeUser() {
   Axios.delete(`/api/users/${user.id}`)
 }
 
+function changePassword(){
+  
+}
+
 
   return (
     <>

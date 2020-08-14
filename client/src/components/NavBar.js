@@ -9,9 +9,9 @@ class NavBar extends React.Component {
      
      if (user) {
        return (
-         <Menu.Menu position="right">
+         <Menu.Menu position='right'>
            <Menu.Item 
-            name="Logout"
+            name='Logout'
             onClick={() => handleLogout(this.props.history) }
             icon='sign-out'
            />
