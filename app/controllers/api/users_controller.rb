@@ -1,5 +1,10 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  
+  def show
+    render json: User.find(params[:id])
+  end
+
 
   def update
     if current_user.update (user_params)
@@ -10,7 +15,8 @@ class Api::UsersController < ApplicationController
   end
 
   def destroy
-    render json: current_user.destroy
+    user = User.find(params[:id])
+    render json: user.destroy
   end
 
   private
