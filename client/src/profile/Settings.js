@@ -23,7 +23,7 @@ function handleSubmit(e) {
 
 function removeUser() {
   props.auth.handleLogout(props.history)
-  Axios.delete(`/api/users/${props.auth.user.id}`)
+  Axios.delete(`/api/users/${user.id}`)
 }
 
 

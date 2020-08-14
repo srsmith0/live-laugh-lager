@@ -13,7 +13,7 @@ class Profile extends React.Component {
   renderMyPosts = () => {
     return (
       //try to pass user id to Post List here
-      <PostList user_id={this.props.auth.user}/>
+      <PostList user_id={this.props.auth.user.id}/>
     )
   }
 

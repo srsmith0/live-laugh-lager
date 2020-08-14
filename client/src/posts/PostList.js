@@ -20,11 +20,8 @@ export default function PostList ({user_id}) {
     })
   }
 
-  //ask James best way to sort.  Won't work with created_at
   let sortedPosts = posts.sort((a, b) => b.id - a.id)
 
-  //need to pass user_id and id to ShowPost...but how?
-  //small change, trying to push to github
   return (
     sortedPosts.map((p) => (
      <div key={p.id}>
