@@ -44,7 +44,7 @@ class Profile extends React.Component {
         return this.renderFollowers()
 
         case "settings":
-          return this.renderSettings()
+          return <Settings history={this.props.history} />
 
         default: 
         return this.renderMyPosts()
