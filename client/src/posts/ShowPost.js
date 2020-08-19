@@ -7,11 +7,11 @@ export default function ShowPost (props) {
   const [comments, setComments] = useState([])
 
   useEffect(() => {
-    Axios.get(`/api/users/${props.location.showProps.user_id}/posts/${props.location.showProps.id}`)
+    Axios.get(`/api/users/${props.location.postProps.user_id}/posts/${props.location.postProps.id}`)
     .then((res) => {
       setPost(res.data)
     })
-    Axios.get(`/api/users/${props.location.showProps.user_id}/posts/${props.location.showProps.id}/comments`)
+    Axios.get(`/api/users/${props.location.postProps.user_id}/posts/${props.location.postProps.id}/comments`)
     .then((res) => {
       setComments(res.data)
     })
@@ -25,9 +25,10 @@ return (
       {comments.map(c => (
         <div>
           {c.content}
-          Likes: {c.likes}
+          <hr />
           </div>
       ))}
+      <Button>Add Comment</Button>
     </div>
     <Button onClick={props.history.goBack}>Go Back</Button>
   </>

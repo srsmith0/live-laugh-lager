@@ -27,7 +27,7 @@ export default function PostList ({user_id}) {
      <div key={p.id}>
        <h1><Link to={{
          pathname:`/post/${p.id}`, 
-         showProps: { ...p}
+         postProps: { ...p}
          }}>
           {p.title}
          </Link></h1>
