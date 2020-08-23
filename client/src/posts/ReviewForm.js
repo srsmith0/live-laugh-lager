@@ -13,10 +13,12 @@ const ReviewForm = (props) => {
 	const [ mouthfeel, setMouthfeel ] = useState(null);
 	const [ overall, setOverall ] = useState(null);
 
-	const review = { name, brewery, style, apperance: app, aroma, flavor, mouthfeel, overall };
+	const review = { name, brewery, style, appearance: app, aroma, flavor, mouthfeel, overall };
 
 	async function handleSubmit(e) {
 		e.preventDefault();
+		calcOverall();
+		debugger;
 		let res = await Axios.post(`/api/users/${props.auth.user.id}/reviews`, review);
 		props.history.push('/profile');
 	}
@@ -44,7 +46,7 @@ const ReviewForm = (props) => {
 	function calcOverall() {
 		const score = (app + aroma + flavor + mouthfeel) / 4;
 		setOverall(score);
-		return score;
+		debugger;
 	}
 
 	return (
@@ -79,7 +81,6 @@ const ReviewForm = (props) => {
 					/>
 				</div>
 				<div style={styles.ranking}>
-					{/* has onRate function to use.  Compile all rankings */}
 					<div>
 						<Header as="h3">Appearance</Header>
 						<Rating icon="heart" onRate={handleApp} rating={app} maxRating={5} />
@@ -96,12 +97,6 @@ const ReviewForm = (props) => {
 						<Header as="h3">Mouthfeel</Header>
 						<Rating icon="heart" onRate={handleMf} rating={mouthfeel} maxRating={5} />
 					</div>
-					<Header as="h3">Overall</Header>
-					<Rating
-						icon="heart"
-						rating={overall}
-						defaultRating={app && aroma && flavor && mouthfeel ? calcOverall() : null}
-					/>
 				</div>
 			</Segment>
 			<Button onClick={props.history.goBack}>Go Back</Button>
