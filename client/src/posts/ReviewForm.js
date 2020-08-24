@@ -11,14 +11,11 @@ const ReviewForm = (props) => {
 	const [ aroma, setAroma ] = useState(null);
 	const [ flavor, setFlavor ] = useState(null);
 	const [ mouthfeel, setMouthfeel ] = useState(null);
-	const [ overall, setOverall ] = useState(null);
 
-	const review = { name, brewery, style, appearance: app, aroma, flavor, mouthfeel, overall };
+	const review = { name, brewery, style, appearance: app, aroma, flavor, mouthfeel };
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		calcOverall();
-		debugger;
 		let res = await Axios.post(`/api/users/${props.auth.user.id}/reviews`, review);
 		props.history.push('/profile');
 	}
@@ -41,12 +38,6 @@ const ReviewForm = (props) => {
 	function handleMf(e, mF) {
 		e.preventDefault();
 		setMouthfeel(mF.rating);
-	}
-
-	function calcOverall() {
-		const score = (app + aroma + flavor + mouthfeel) / 4;
-		setOverall(score);
-		debugger;
 	}
 
 	return (
