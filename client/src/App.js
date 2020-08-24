@@ -14,6 +14,7 @@ import Home from './components/Home';
 import PostList from './posts/PostList';
 import ShowPost from './posts/ShowPost';
 import Settings from './profile/Settings';
+import ShowReview from './posts/ShowReview'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <ProtectedRoute exact path='/review' component={ReviewForm} />
         <ProtectedRoute exact path='/post' component={PostForm} />
         <Route exact path='/post/:id' component={ShowPost} />
+        <Route exact path='/review/:id' component={ShowReview} />
         <Route component={NoMatch} /> 
       </Switch>
     </FetchUser>

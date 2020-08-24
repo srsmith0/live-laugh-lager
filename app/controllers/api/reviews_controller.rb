@@ -1,10 +1,11 @@
 class Api::ReviewsController < ApplicationController
+  before_action :set_review, only: [:show, :update, :destroy]
+  
   def index
     render json: current_user.reviews.all
   end
 
   def show
-    set_review
     render json: @review
   end
 
@@ -17,6 +18,19 @@ class Api::ReviewsController < ApplicationController
       render json: review.errors
     end
   end
+
+  def update
+    if @review.update(review_params)
+      render json: @review
+    else 
+      render json: @review.errors, status: 422
+  end
+end
+
+  def destroy
+    render json: @review
+  end
+
 
 
   private

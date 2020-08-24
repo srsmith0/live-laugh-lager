@@ -111,9 +111,3 @@ class ConnectedProfile extends React.Component {
 }
 
 export default ConnectedProfile;
-
-// const background = {
-//   backgroundColor:"#D9AFD9",
-//   backgroundImage:'linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)'
-
-// }

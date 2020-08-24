@@ -4,8 +4,9 @@ import { Button } from 'semantic-ui-react';
 import { Form } from '../components/Form';
 import TextInput from '../components/TextInput';
 import { useFormInput } from '../customHooks/useFormInput';
+import { AuthConsumer } from '../providers/AuthProvider';
 
-export default function ShowPost(props) {
+function ShowPost(props) {
 	const [ post, setPost ] = useState({});
 	const [ comments, setComments ] = useState([]);
 	const [ editing, setEditing ] = useState(false);
@@ -56,7 +57,12 @@ export default function ShowPost(props) {
 					<p>{post.content}</p>
 				</div>
 			)}
-
+			{props.auth.user.id === post.user_id ? (
+				<div>
+					<Button onClick={() => deletePost(post)}>Delete</Button>
+					<Button onClick={() => setEditing(!editing)}>Edit</Button>
+				</div>
+			) : null}
 			<div>
 				{comments.map((c) => (
 					<div>
@@ -66,9 +72,13 @@ export default function ShowPost(props) {
 				))}
 				<Button>Add Comment</Button>
 			</div>
-			<Button onClick={() => deletePost(post)}>Delete</Button>
-			<Button onClick={() => setEditing(!editing)}>Edit</Button>
 			<Button onClick={props.history.goBack}>Go Back</Button>
 		</div>
 	);
 }
+
+function ConnectedShowPost(props) {
+	return <AuthConsumer>{(auth) => <ShowPost {...props} auth={auth} />}</AuthConsumer>;
+}
+
+export default ConnectedShowPost;
