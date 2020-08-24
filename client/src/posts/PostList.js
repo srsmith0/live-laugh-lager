@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
 
 export default function PostList({ user_id }) {
 	const [ posts, setPosts ] = useState([]);
@@ -16,15 +15,22 @@ export default function PostList({ user_id }) {
 		});
 	}, []);
 
-	const deletePost = (post) => {
-		Axios.delete(`/api/users/${user_id}/posts/${post.id}`).then((res) => {
-			setPosts(posts.filter((p) => p.id !== post.id));
-		});
-	};
-
 	let allPosts = [ ...reviews, ...posts ];
 
-	let sortedPosts = allPosts.sort((a, b) => b.id - a.id);
+	function compare(a, b) {
+		const createA = a.created_at;
+		const createB = b.created_at;
+
+		let comparison = 0;
+		if (createA > createB) {
+			comparison = -1;
+		} else if (createA < createB) {
+			comparison = 1;
+		}
+		return comparison;
+	}
+
+	let sortedPosts = allPosts.sort(compare);
 
 	return sortedPosts.map((p) => (
 		<div key={p.id}>
@@ -48,7 +54,6 @@ export default function PostList({ user_id }) {
 				</Link>
 			</h1>
 			<p>{p.content ? p.content : null}</p>
-			{p.content ? <Button onClick={() => deletePost(p)}>Delete</Button> : null}
 		</div>
 	));
 }

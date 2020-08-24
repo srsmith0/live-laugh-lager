@@ -4,10 +4,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    user = current_user
-    post = user.posts.find(params[:id])
-    
-    render json: post 
+    render json: Post.find(params[:id])
   end
 
 
@@ -22,7 +19,7 @@ class Api::PostsController < ApplicationController
 
 def update
   set_post 
-  if @post.update 
+  if @post.update(post_params)
     render json: @post
   else
     render json: @post.errors, status: 422
@@ -43,7 +40,7 @@ end
   end
 
   def set_post
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
 
