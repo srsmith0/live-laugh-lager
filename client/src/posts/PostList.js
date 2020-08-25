@@ -33,7 +33,7 @@ export default function PostList({ user_id }) {
 	let sortedPosts = allPosts.sort(compare);
 
 	return sortedPosts.map((p) => (
-		<div key={p.id}>
+		<div key={p.content ? `post-${p.id}` : `review-${p.id}`}>
 			<h1>
 				<Link
 					to={
