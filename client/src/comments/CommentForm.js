@@ -8,20 +8,20 @@ import { Form } from '../components/Form';
 export default function CommentForm(props) {
 	const content = useFormInput('', 'comment');
 
-	const comment = { content: content.value, post_id: props.post_id };
+	const newComment = { content: content.value, post_id: props.post_id };
 
 	function addComment(e) {
-		Axios.post(`/api/users/${props.user_id}/posts/${props.post_id}/comments`, comment).then((res) => {
-			let newComments = [ comment, ...props.comments ];
-			props.setComments(newComments);
+		Axios.post(`/api/users/${props.user_id}/posts/${props.post_id}/comments`, newComment).then((res) => {
+			props.addComment(res.data);
+			props.setCommentForm(!props.commentForm);
 		});
 	}
 
 	return (
 		<div>
-			<Form header="Add Comment" onSubmit={addComment}>
+			<Form onSubmit={addComment}>
 				<TextInput useFormInput={content} textarea />
-				<Button>Add Comment</Button>
+				<Button>Submit</Button>
 			</Form>
 		</div>
 	);
