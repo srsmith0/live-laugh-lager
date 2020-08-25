@@ -70,12 +70,14 @@ class Profile extends React.Component {
 								active={activeItem === 'followers'}
 								onClick={this.handleItemClick}
 							/>
-							<Menu.Item
-								icon="find"
-								name="find breweries"
-								active={activeItem === 'breweries'}
-								onClick={this.handleItemClick}
-							/>
+							<Link to={{ pathname: '/findbrewery' }}>
+								<Menu.Item
+									icon="find"
+									name="find breweries"
+									active={activeItem === 'breweries'}
+									onClick={this.handleItemClick}
+								/>{' '}
+							</Link>
 							<Dropdown item icon="add" text="Add">
 								<Dropdown.Menu>
 									<Dropdown.Item as={Link} to="/review" props={this.props}>

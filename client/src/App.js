@@ -15,6 +15,7 @@ import PostList from './posts/PostList';
 import ShowPost from './posts/ShowPost';
 import Settings from './profile/Settings';
 import ShowReview from './posts/ShowReview'
+import FindBrewery from './components/FindBrewery'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <ProtectedRoute exact path='/post' component={PostForm} />
         <Route exact path='/post/:id' component={ShowPost} />
         <Route exact path='/review/:id' component={ShowReview} />
+        <Route exact path='/findbrewery' component={FindBrewery} />
         <Route component={NoMatch} /> 
       </Switch>
     </FetchUser>

@@ -34,11 +34,12 @@ export default function ShowReview(props) {
 			<h3>Brewery: {review.brewery}</h3>
 			<h3>Style: {review.style}</h3>
 			<p>Description: {review.description}</p>
-			Appearance: <Rating icon="heart" defaultRating={appearance} maxRating={5} disabled />
-			Aroma: <Rating icon="heart" defaultRating={aroma} maxRating={5} disabled />
-			Flavor: <Rating icon="heart" defaultRating={flavor} maxRating={5} disabled />
-			Mouthfeel: <Rating icon="heart" defaultRating={mouthfeel} maxRating={5} disabled />
-			Overall: <Rating icon="heart" defaultRating={overall} maxRating={5} disabled />
+			Appearance: <Rating icon="heart" defaultRating={appearance} maxRating={5} size="tiny" disabled />
+			Aroma: <Rating icon="heart" defaultRating={aroma} maxRating={5} size="tiny" disabled />
+			Flavor: <Rating icon="heart" defaultRating={flavor} maxRating={5} size="tiny" disabled />
+			Mouthfeel: <Rating icon="heart" defaultRating={mouthfeel} maxRating={5} size="tiny" disabled />
+			<br />
+			Overall: <Rating icon="heart" defaultRating={overall} maxRating={5} size="massive" disabled />
 			<Button onClick={() => deleteReview()}>Delete</Button>
 			<Button onClick={props.history.goBack}>Go Back</Button>
 		</div>
