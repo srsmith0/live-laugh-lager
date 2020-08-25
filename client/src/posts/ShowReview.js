@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { Rating } from 'semantic-ui-react';
+import { Rating, Button } from 'semantic-ui-react';
 
 export default function ShowReview(props) {
 	const [ review, setReview ] = useState({});
@@ -18,6 +18,16 @@ export default function ShowReview(props) {
 		});
 	}, []);
 
+	const deleteReview = () => {
+		Axios.delete(`/api/users/${props.location.reviewProps.user_id}/reviews/${props.location.reviewProps.id}`)
+			.then((res) => {
+				props.history.push('/profile');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<div>
 			<h1>{review.name}</h1>
@@ -29,6 +39,8 @@ export default function ShowReview(props) {
 			Flavor: <Rating icon="heart" defaultRating={flavor} maxRating={5} disabled />
 			Mouthfeel: <Rating icon="heart" defaultRating={mouthfeel} maxRating={5} disabled />
 			Overall: <Rating icon="heart" defaultRating={overall} maxRating={5} disabled />
+			<Button onClick={() => deleteReview()}>Delete</Button>
+			<Button onClick={props.history.goBack}>Go Back</Button>
 		</div>
 	);
 }

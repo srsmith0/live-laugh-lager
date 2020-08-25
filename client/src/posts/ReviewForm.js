@@ -6,13 +6,14 @@ import { AuthConsumer } from '../providers/AuthProvider';
 const ReviewForm = (props) => {
 	const [ name, setName ] = useState('');
 	const [ brewery, setBrewery ] = useState('');
+	const [ description, setDescription ] = useState('');
 	const [ style, setStyle ] = useState('');
 	const [ app, setApp ] = useState(null);
 	const [ aroma, setAroma ] = useState(null);
 	const [ flavor, setFlavor ] = useState(null);
 	const [ mouthfeel, setMouthfeel ] = useState(null);
 
-	const review = { name, brewery, style, appearance: app, aroma, flavor, mouthfeel };
+	const review = { name, brewery, description, style, appearance: app, aroma, flavor, mouthfeel };
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -69,6 +70,12 @@ const ReviewForm = (props) => {
 						value={style}
 						style={{ width: '25%' }}
 						onChange={(e) => setStyle(e.target.value)}
+					/>
+					<Form.TextArea
+						label="Description"
+						name="description"
+						value={description}
+						onChange={(e) => setDescription(e.target.value)}
 					/>
 				</div>
 				<div style={styles.ranking}>
