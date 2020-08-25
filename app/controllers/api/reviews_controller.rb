@@ -1,11 +1,12 @@
 class Api::ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :update, :destroy]
+  #before_action :set_review, only: [:show, :update, :destroy]
   
   def index
     render json: current_user.reviews.all
   end
 
   def show
+    set_review
     render json: @review
   end
 
@@ -28,7 +29,8 @@ class Api::ReviewsController < ApplicationController
 end
 
   def destroy
-    render json: @review
+    set_review
+    render json: @review.destroy
   end
 
 

@@ -5,10 +5,10 @@ import { Form } from '../components/Form';
 import TextInput from '../components/TextInput';
 import { useFormInput } from '../customHooks/useFormInput';
 import { AuthConsumer } from '../providers/AuthProvider';
+import CommentList from '../comments/CommentList';
 
 function ShowPost(props) {
 	const [ post, setPost ] = useState({});
-	const [ comments, setComments ] = useState([]);
 	const [ editing, setEditing ] = useState(false);
 
 	const title = useFormInput(props.location.postProps.title, 'title');
@@ -17,11 +17,6 @@ function ShowPost(props) {
 	useEffect(() => {
 		Axios.get(`/api/users/${props.location.postProps.user_id}/posts/${props.location.postProps.id}`).then((res) => {
 			setPost(res.data);
-		});
-		Axios.get(
-			`/api/users/${props.location.postProps.user_id}/posts/${props.location.postProps.id}/comments`
-		).then((res) => {
-			setComments(res.data);
 		});
 	}, []);
 
@@ -64,13 +59,7 @@ function ShowPost(props) {
 				</div>
 			) : null}
 			<div>
-				{comments.map((c) => (
-					<div>
-						{c.content}
-						<hr />
-					</div>
-				))}
-				<Button>Add Comment</Button>
+				<CommentList post_id={props.location.postProps.id} user_id={props.location.postProps.user_id} />
 			</div>
 			<Button onClick={props.history.goBack}>Go Back</Button>
 		</div>

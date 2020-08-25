@@ -18,15 +18,15 @@ export default function ShowReview(props) {
 		});
 	}, []);
 
-	function deleteReview() {
-		Axios.delete(`/api/users/${review.user_id}/reviews/${review.id}`)
+	const deleteReview = () => {
+		Axios.delete(`/api/users/${props.location.reviewProps.user_id}/reviews/${props.location.reviewProps.id}`)
 			.then((res) => {
 				props.history.push('/profile');
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}
+	};
 
 	return (
 		<div>
