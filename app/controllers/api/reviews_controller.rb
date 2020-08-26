@@ -1,12 +1,11 @@
 class Api::ReviewsController < ApplicationController
-  #before_action :set_review, only: [:show, :update, :destroy]
+  before_action :set_review, only: [:show, :update, :destroy]
   
   def index
     render json: current_user.reviews.all
   end
 
   def show
-    set_review
     render json: @review
   end
 
@@ -22,6 +21,7 @@ class Api::ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
+      Review.set_overall(@review)
       render json: @review
     else 
       render json: @review.errors, status: 422
@@ -29,12 +29,10 @@ class Api::ReviewsController < ApplicationController
 end
 
   def destroy
-    set_review
     render json: @review.destroy
   end
 
-
-
+  
   private
   def review_params
     params.require(:review).permit(:name, :brewery, :style, :description, :appearance, :aroma, :flavor, :mouthfeel, :overall)
