@@ -40,12 +40,12 @@ export default function PostList({ user_id }) {
 						p.content ? (
 							{
 								pathname: `/post/${p.id}`,
-								postProps: { ...p }
+								state: { Post: p }
 							}
 						) : (
 							{
 								pathname: `/review/${p.id} `,
-								reviewProps: { ...p }
+								state: { Review: p }
 							}
 						)
 					}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import { Button } from 'semantic-ui-react';
 import { Form } from '../components/Form';
@@ -8,31 +8,23 @@ import { AuthConsumer } from '../providers/AuthProvider';
 import CommentList from '../comments/CommentList';
 
 function ShowPost(props) {
-	const [ post, setPost ] = useState({});
 	const [ editing, setEditing ] = useState(false);
+	const { Post } = props.location.state;
 
-	const title = useFormInput(props.location.postProps.title, 'title');
-	const content = useFormInput(props.location.postProps.content, 'content');
-
-	useEffect(() => {
-		Axios.get(`/api/users/${props.location.postProps.user_id}/posts/${props.location.postProps.id}`).then((res) => {
-			setPost(res.data);
-		});
-	}, []);
+	const title = useFormInput(Post.title, 'title');
+	const content = useFormInput(Post.content, 'content');
 
 	const handleEdit = (e) => {
 		let post = { title: title.value, content: content.value };
-		Axios.put(
-			`/api/users/${props.location.postProps.user_id}/posts/${props.location.postProps.id}`,
-			post
-		).then((res) => {
-			setPost(post);
+		Axios.put(`/api/users/${Post.user_id}/posts/${Post.id}`, post).then((res) => {
+			Post.title = post.title;
+			Post.content = post.content;
 			setEditing(!editing);
 		});
 	};
 
-	const deletePost = (post) => {
-		Axios.delete(`/api/users/${post.user_id}/posts/${post.id}`).then((res) => {
+	const deletePost = () => {
+		Axios.delete(`/api/users/${Post.user_id}/posts/${Post.id}`).then((res) => {
 			props.history.push('/profile');
 		});
 	};
@@ -48,18 +40,18 @@ function ShowPost(props) {
 				</Form>
 			) : (
 				<div>
-					<h1>{post.title}</h1>
-					<p>{post.content}</p>
+					<h1>{Post.title}</h1>
+					<p>{Post.content}</p>
 				</div>
 			)}
-			{props.auth.user.id === post.user_id ? (
+			{props.auth.user.id === Post.user_id ? (
 				<div>
-					<Button onClick={() => deletePost(post)}>Delete</Button>
+					<Button onClick={() => deletePost()}>Delete</Button>
 					<Button onClick={() => setEditing(!editing)}>Edit</Button>
 				</div>
 			) : null}
 			<div>
-				<CommentList post_id={props.location.postProps.id} user_id={props.location.postProps.user_id} />
+				<CommentList post_id={Post.id} user_id={Post.user_id} />
 			</div>
 			<Button onClick={props.history.goBack}>Go Back</Button>
 		</div>
