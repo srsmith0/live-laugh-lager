@@ -25,7 +25,7 @@ export default function PostForm (props) {
     <Form header="Add a Post" onSubmit={handleSubmit}>
       <TextInput label="Title" useFormInput={title} />
       <br />
-      <TextInput label="Content" useFormInput={content} textarea />
+      <TextInput label="Content" useFormInput={content} textarea required />
       <Button style={{marginTop:"10px"}}>Submit</Button>
     </Form>
     <br />

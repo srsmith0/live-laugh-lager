@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import EditComment from './EditComment';
-import Axios from 'axios';
 import { AuthConsumer } from '../providers/AuthProvider';
 
 function Comment(props) {
@@ -11,9 +10,10 @@ function Comment(props) {
 			<p>{props.comment.content}</p>
 			{editing ? (
 				<EditComment
-					editComment={props.editComment}
-					comment={props.comment}
-					postId={props.postId}
+					{...props}
+					// editComment={props.editComment}
+					// comment={props.comment}
+					// postId={props.postId}
 					setEditing={setEditing}
 					editing={editing}
 				/>

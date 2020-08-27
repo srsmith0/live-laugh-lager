@@ -14,6 +14,7 @@ export default function EditPost(props) {
 
 	const handleEdit = (e) => {
 		let editedPost = { title: title.value, content: content.value };
+		debugger;
 		Axios.put(`/api/users/${user_id}/posts/${id}`, editedPost).then((res) => {
 			props.setPost(res.data);
 			props.setEditing(!props.editing);
