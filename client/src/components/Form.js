@@ -4,6 +4,7 @@ export function Form(props) {
 	function preventDefaultSubmit(e) {
 		e.preventDefault();
 		props.onSubmit();
+		e.target.reset();
 	}
 	return (
 		<form onSubmit={preventDefaultSubmit}>
