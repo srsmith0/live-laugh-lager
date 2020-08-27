@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import CommentForm from './CommentForm';
+import Comment from './Comment';
 import { Button } from 'semantic-ui-react';
+import { AuthConsumer } from '../providers/AuthProvider';
 
-export default function CommentList(props) {
+function CommentList(props) {
 	const [ comments, setComments ] = useState([]);
 	const [ commentForm, setCommentForm ] = useState(false);
 
@@ -19,11 +21,33 @@ export default function CommentList(props) {
 		setComments([ comment, ...comments ]);
 	}
 
+	const editComment = (comment) => {
+		Axios.put(`/api/users/${props.userId}/posts/${props.post_id}/comments/${comment.id}`).then((res) => {
+			const updateComment = comments.map((c) => {
+				if (c.id === comment.id) return res.data;
+				return c;
+			});
+		});
+	};
+
 	function deleteComment(comment) {
 		Axios.delete(`/api/users/${comment.user_id}/posts/${comment.post_id}/comments/${comment.id}`).then((res) => {
 			const newComments = comments.filter((c) => c.id !== comment.id);
 			setComments(newComments);
 		});
+	}
+
+	function renderComments() {
+		return sortedComments.map((c) => (
+			<Comment
+				key={c.id}
+				editComment={editComment}
+				deleteComment={deleteComment}
+				userId={props.user_id}
+				addComment={addComment}
+				comment={c}
+			/>
+		));
 	}
 
 	function compare(a, b) {
@@ -54,13 +78,13 @@ export default function CommentList(props) {
 					addComment={addComment}
 				/>
 			) : null}
-			{sortedComments.map((c) => (
-				<div key={c.id}>
-					{c.content}
-					<button onClick={() => deleteComment(c)}>Delete</button>
-					<hr />
-				</div>
-			))}
+			{renderComments()}
 		</div>
 	);
 }
+
+function ConnectedCommentList(props) {
+	return <AuthConsumer>{(auth) => <CommentList {...props} auth={auth} />}</AuthConsumer>;
+}
+
+export default ConnectedCommentList;

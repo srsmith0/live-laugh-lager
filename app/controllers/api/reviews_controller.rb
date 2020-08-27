@@ -21,7 +21,6 @@ class Api::ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      Review.set_overall(@review)
       render json: @review
     else 
       render json: @review.errors, status: 422
