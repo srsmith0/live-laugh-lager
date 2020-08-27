@@ -13,6 +13,18 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def update
+    #come back here tomorrow
+    binding.pry
+  comment = Comment.find(params[:id])
+    if comment.update(comment_params)
+    render json: comment
+      else
+      render json: comment.errors, status: 422
+    end
+  end
+
+
   def destroy
     comment = Comment.find(params[:id])
     render json: comment.destroy

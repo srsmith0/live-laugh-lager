@@ -1,61 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Button } from 'semantic-ui-react';
-import { Form } from '../components/Form';
-import TextInput from '../components/TextInput';
-import { useFormInput } from '../customHooks/useFormInput';
 import { AuthConsumer } from '../providers/AuthProvider';
 import CommentList from '../comments/CommentList';
+import { useParams } from 'react-router-dom';
+import EditPost from './EditPost';
 
 function ShowPost(props) {
 	const [ editing, setEditing ] = useState(false);
-	const { Post } = props.location.state;
+	const [ post, setPost ] = useState(null);
+	const { id } = useParams();
+	const { user_id } = props.location.state;
 
-	const title = useFormInput(Post.title, 'title');
-	const content = useFormInput(Post.content, 'content');
-
-	const handleEdit = (e) => {
-		let post = { title: title.value, content: content.value };
-		Axios.put(`/api/users/${Post.user_id}/posts/${Post.id}`, post).then((res) => {
-			Post.title = post.title;
-			Post.content = post.content;
-			setEditing(!editing);
+	useEffect(() => {
+		Axios.get(`/api/users/${user_id}/posts/${id}`).then((res) => {
+			setPost(res.data);
 		});
-	};
+	}, []);
 
 	const deletePost = () => {
-		Axios.delete(`/api/users/${Post.user_id}/posts/${Post.id}`).then((res) => {
+		Axios.delete(`/api/users/${user_id}/posts/${id}`).then((res) => {
 			props.history.push('/profile');
 		});
 	};
 
-	return (
-		<div>
-			{editing ? (
-				<Form header="Edit Post" onSubmit={handleEdit}>
-					<TextInput label="Title" useFormInput={title} value={title} />
-					<br />
-					<TextInput label="Content" useFormInput={content} value={content} textarea />
-					<Button style={{ marginTop: '10px' }}>Finish</Button>
-				</Form>
-			) : (
-				<div>
-					<h1>{Post.title}</h1>
-					<p>{Post.content}</p>
-				</div>
-			)}
-			{props.auth.user.id === Post.user_id ? (
-				<div>
-					<Button onClick={() => deletePost()}>Delete</Button>
-					<Button onClick={() => setEditing(!editing)}>Edit</Button>
-				</div>
-			) : null}
+	if (post) {
+		return (
 			<div>
-				<CommentList post_id={Post.id} user_id={Post.user_id} />
+				{editing ? (
+					<EditPost editing={editing} post={post} setPost={setPost} setEditing={setEditing} />
+				) : (
+					<div>
+						<h1>{post.title}</h1>
+						<p>{post.content}</p>
+					</div>
+				)}
+				{props.auth.user.id === post.user_id ? (
+					<div>
+						<Button onClick={() => deletePost()}>Delete</Button>
+						<Button onClick={() => setEditing(!editing)}>Edit</Button>
+					</div>
+				) : null}
+				<div>
+					<CommentList post_id={id} user_id={user_id} />
+				</div>
+				<Button onClick={props.history.goBack}>Go Back</Button>
 			</div>
-			<Button onClick={props.history.goBack}>Go Back</Button>
-		</div>
-	);
+		);
+	} else {
+		return null;
+	}
 }
 
 function ConnectedShowPost(props) {
