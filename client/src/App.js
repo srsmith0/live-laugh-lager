@@ -15,7 +15,7 @@ import PostList from './posts/PostList';
 import ShowPost from './posts/ShowPost';
 import Settings from './profile/Settings';
 import ShowReview from './posts/ShowReview'
-import FindBrewery from './components/FindBrewery'
+import FindBrewery from './FindBrewery/FindBrewery'
 
 function App() {
   return (
