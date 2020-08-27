@@ -6,7 +6,7 @@ export default function FindBrewery(props) {
 	return (
 		<div>
 			<BrewerySearchForm />
-			<Button onClick={props.history.goBack}>Go Back</Button>
+			{/* <Button onClick={props.history.goBack}>Go Back</Button> */}
 		</div>
 	);
 }

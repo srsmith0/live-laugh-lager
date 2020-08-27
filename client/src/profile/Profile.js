@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
 import Settings from './Settings';
+import FindBrewery from '../FindBrewery/FindBrewery';
 
 class Profile extends React.Component {
 	state = { activeItem: 'feed' };
@@ -39,6 +40,9 @@ class Profile extends React.Component {
 			case 'followers':
 				return this.renderFollowers();
 
+			case 'breweries':
+				return <FindBrewery history={this.props.history} />;
+
 			case 'settings':
 				return <Settings history={this.props.history} />;
 
@@ -70,14 +74,12 @@ class Profile extends React.Component {
 								active={activeItem === 'followers'}
 								onClick={this.handleItemClick}
 							/>
-							<Link to={{ pathname: '/findbrewery' }}>
-								<Menu.Item
-									icon="find"
-									name="find breweries"
-									active={activeItem === 'breweries'}
-									onClick={this.handleItemClick}
-								/>{' '}
-							</Link>
+							<Menu.Item
+								icon="find"
+								name="breweries"
+								active={activeItem === 'breweries'}
+								onClick={this.handleItemClick}
+							/>{' '}
 							<Dropdown item icon="add" text="Add">
 								<Dropdown.Menu>
 									<Dropdown.Item as={Link} to="/review" props={this.props}>
