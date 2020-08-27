@@ -9,7 +9,9 @@ export default function EditComment(props) {
 
 	//not getting an id passed
 	function handleEdit(e) {
-		const editedComment = { content: content.value };
+		let comment = props.comment;
+		comment.content = content.value;
+		const editedComment = comment;
 		props.editComment(editedComment);
 		props.setEditing(!props.editing);
 	}

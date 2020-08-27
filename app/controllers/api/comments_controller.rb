@@ -14,8 +14,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def update
-    #come back here tomorrow
-    binding.pry
   comment = Comment.find(params[:id])
     if comment.update(comment_params)
     render json: comment

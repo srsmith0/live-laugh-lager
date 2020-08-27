@@ -22,11 +22,12 @@ function CommentList(props) {
 	}
 
 	const editComment = (comment) => {
-		Axios.put(`/api/users/${props.userId}/posts/${props.post_id}/comments/${comment.id}`).then((res) => {
+		Axios.put(`/api/users/${props.userId}/posts/${props.post_id}/comments/${comment.id}`, comment).then((res) => {
 			const updateComment = comments.map((c) => {
 				if (c.id === comment.id) return res.data;
 				return c;
 			});
+			setComments(updateComment);
 		});
 	};
 
@@ -40,7 +41,6 @@ function CommentList(props) {
 	function renderComments() {
 		return sortedComments.map((c) => (
 			<Comment
-				key={c.id}
 				editComment={editComment}
 				deleteComment={deleteComment}
 				userId={props.user_id}

@@ -37,7 +37,7 @@ export default function PostList({ user_id }) {
 			<h1>
 				<Link
 					to={
-						p.content ? (
+						p.title ? (
 							{
 								pathname: `/post/${p.id}`,
 								state: { user_id: user_id }
@@ -50,10 +50,10 @@ export default function PostList({ user_id }) {
 						)
 					}
 				>
-					{p.content ? p.title : `${p.name} Review`}
+					{p.title ? p.title : `${p.name} Review`}
 				</Link>
 			</h1>
-			<p>{p.content ? p.content : null}</p>
+			<p>{p.title ? p.content : null}</p>
 		</div>
 	));
 }
