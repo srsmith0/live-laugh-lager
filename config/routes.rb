@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/user/:nickname', to: 'users#find_user'
-    get 'followers/:user_id', to: 'follows#show_followers'
+    get '/followers/:user_id', to: 'follows#show_followers'
     post '/follower/:user_id', to: 'followers#create'
     post '/user/:user_id/follow/:follower_id', to: 'follows#create'
-    put '/api/user/:user_id/follow/:follower_id', to: 'follows#update'
-    get '/api/followed_posts/:user_id', to: 'posts#show_all_followed'
+    put '/user/:user_id/follow/:follower_id', to: 'follows#update'
+    get '/followed_posts/:user_id', to: 'posts#show_all_followed'
+    get '/followed_reviews/:user_id', to: 'reviews#show_all_followed'
+    get '/set_user/:user_id', to: 'users#select_user'
     resources :followers, only: [:index, :create, :destroy]
     resources :follows, only: [:index, :create, :destroy]
     resources :users do
