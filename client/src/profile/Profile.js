@@ -5,6 +5,7 @@ import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
 import Settings from './Settings';
 import FindBrewery from '../FindBrewery/FindBrewery';
+import ShowFollowers from './ShowFollowers';
 
 class Profile extends React.Component {
 	state = { activeItem: 'feed' };
@@ -16,16 +17,11 @@ class Profile extends React.Component {
 	};
 
 	renderAllPosts() {
-		//TODO list posts of followers and own posts
+		//TODO list posts of followers and own posts, POSSIBILY DOING THIS IN POSTLIST COMPONENT
 	}
 
 	renderFollowers() {
-		return (
-			//TODO list followers
-			<div>
-				<h1>Finish the function!</h1>
-			</div>
-		);
+		return <ShowFollowers userId={this.props.auth.user.id} />;
 	}
 
 	renderSettings() {

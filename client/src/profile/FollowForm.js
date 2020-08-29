@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 import { useFormInput } from '../customHooks/useFormInput';
 
 export default function FollowForm({ user }) {
+	const [ success, setSuccess ] = useState('');
 	const username = useFormInput('', 'username');
 
 	function followUser(userName) {
@@ -15,19 +16,26 @@ export default function FollowForm({ user }) {
 					user_id: res.data.id,
 					follower_id: user.id
 				}).then((res) => {
-					console.log(res.data);
+					{
+						res.data.message ? alert(`${res.data.message}`) : setSuccess(`Now following ${userName}`);
+					}
 				});
 			})
 			.catch((err) => {
-				alert('Could not follow');
+				alert('User does not exist');
+				setSuccess('');
 			});
 	}
 
-	//need to figure out how to clear form
-
 	async function handleSubmit() {
 		followUser(username.value);
+		setTimeout(emptySuccess, 3000);
 	}
+
+	function emptySuccess() {
+		return setSuccess('');
+	}
+
 	return (
 		<div>
 			<Form header="Enter Username to Follow" onSubmit={handleSubmit}>
@@ -35,6 +43,7 @@ export default function FollowForm({ user }) {
 				<br />
 				<Button style={{ marginTop: '10px' }}>Follow</Button>
 			</Form>
+			<p>{success}</p>
 		</div>
 	);
 }
