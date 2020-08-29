@@ -1,22 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import PostListItem from './PostListItem';
 
-export default function PostList({ user_id }) {
+export default function PostList({ userId }) {
 	const [ posts, setPosts ] = useState([]);
 	const [ reviews, setReviews ] = useState([]);
+	const [ followedPosts, setFollowedPosts ] = useState([]);
+	const [ followedReviews, setFollowedReviews ] = useState([]);
 
-	//create a combined function on backend to gather user posts and followed posts/reviews
 	useEffect(() => {
-		Axios.get(`/api/users/${user_id}/posts`).then((res) => {
-			setPosts(res.data);
-		});
-		Axios.get(`/api/users/${user_id}/reviews`).then((res) => {
-			setReviews(res.data);
-		});
+		getMyPosts();
+		getMyReviews();
+		getMyFollowedPosts();
+		getMyFollowedReviews();
 	}, []);
 
-	let allPosts = [ ...reviews, ...posts ];
+	function getMyPosts() {
+		Axios.get(`/api/users/${userId}/posts`).then((res) => {
+			setPosts(res.data);
+		});
+	}
+
+	function getMyReviews() {
+		Axios.get(`/api/users/${userId}/reviews`).then((res) => {
+			setReviews(res.data);
+		});
+	}
+
+	function getMyFollowedReviews() {
+		Axios.get(`/api/followed_reviews/${userId}`).then((res) => {
+			setFollowedReviews(res.data);
+		});
+	}
+
+	function getMyFollowedPosts() {
+		Axios.get(`/api/followed_posts/${userId}`).then((res) => {
+			setFollowedPosts(res.data);
+		});
+	}
 
 	function compare(a, b) {
 		const createA = a.created_at;
@@ -31,30 +53,8 @@ export default function PostList({ user_id }) {
 		return comparison;
 	}
 
+	let allPosts = [ ...reviews, ...followedReviews, ...posts, ...followedPosts ];
 	let sortedPosts = allPosts.sort(compare);
 
-	return sortedPosts.map((p) => (
-		<div key={p.content ? `post-${p.id}` : `review-${p.id}`}>
-			<h1>
-				<Link
-					to={
-						p.title ? (
-							{
-								pathname: `/post/${p.id}`,
-								state: { user_id: user_id }
-							}
-						) : (
-							{
-								pathname: `/review/${p.id} `,
-								state: { user_id: user_id }
-							}
-						)
-					}
-				>
-					{p.title ? p.title : `${p.name} Review`}
-				</Link>
-			</h1>
-			<p>{p.title ? p.content : null}</p>
-		</div>
-	));
+	return sortedPosts.map((p) => <PostListItem userId={userId} item={p} />);
 }

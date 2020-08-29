@@ -9,6 +9,24 @@ class Api::ReviewsController < ApplicationController
     render json: @review
   end
 
+  def show_all_followed
+    followed = []
+    Follow.all.each do |f|
+      if f.user_id == current_user.id
+        followed << f
+      end
+    end
+    followed_reviews =[]
+    followed.each do |f|
+      Review.all.each do |r|
+        if f.follower_id == r.user_id 
+          followed_reviews << r 
+        end
+      end
+  end
+  render json: followed_reviews
+end
+
   def create
     review = current_user.reviews.new(review_params)
     Review.set_overall(review)
