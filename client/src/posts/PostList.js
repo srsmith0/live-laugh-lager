@@ -6,6 +6,7 @@ export default function PostList({ user_id }) {
 	const [ posts, setPosts ] = useState([]);
 	const [ reviews, setReviews ] = useState([]);
 
+	//create a combined function on backend to gather user posts and followed posts/reviews
 	useEffect(() => {
 		Axios.get(`/api/users/${user_id}/posts`).then((res) => {
 			setPosts(res.data);
