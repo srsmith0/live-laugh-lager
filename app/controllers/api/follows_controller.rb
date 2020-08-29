@@ -14,7 +14,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def show_followers
-    find_followers = Follow.set_followers(current_user.id)
+    find_followers = current_user.follows.all
     my_followers = Follow.sort_followers(find_followers)
     render json: my_followers
   end

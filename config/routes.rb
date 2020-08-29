@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     post '/follower/:user_id', to: 'followers#create'
     post '/user/:user_id/follow/:follower_id', to: 'follows#create'
     put '/api/user/:user_id/follow/:follower_id', to: 'follows#update'
+    get '/api/followed_posts/:user_id', to: 'posts#show_all_followed'
     resources :followers, only: [:index, :create, :destroy]
     resources :follows, only: [:index, :create, :destroy]
     resources :users do

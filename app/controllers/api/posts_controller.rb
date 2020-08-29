@@ -8,6 +8,25 @@ class Api::PostsController < ApplicationController
   end
 
 
+  def show_all_followed
+    followed = []
+    Follow.all.each do |f|
+      if f.user_id == current_user.id
+        followed << f
+      end
+    end
+    followed_posts =[]
+    followed.each do |f|
+      Post.all.each do |p|
+        if f.follower_id == p.user_id 
+          followed_posts << p 
+        end
+      end
+  end
+  render json: followed_posts
+end
+
+
   def create
     new_post = current_user.posts.new(post_params)
     if new_post.save
