@@ -7,7 +7,6 @@ export default function ShowFollowers({ userId }) {
 
 	useEffect(() => {
 		Axios.get(`/api/followers/${userId}`).then((res) => {
-			console.log(res.data);
 			setFollowers(res.data);
 		});
 	}, []);

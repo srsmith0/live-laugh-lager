@@ -33,7 +33,7 @@ export default function FollowForm({ user }) {
 	}
 
 	function emptySuccess() {
-		return setSuccess('');
+		setSuccess('');
 	}
 
 	return (

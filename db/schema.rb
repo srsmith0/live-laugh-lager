@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_205448) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
+    t.string "user_name"
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_205448) do
     t.string "title"
     t.string "content"
     t.string "image"
+    t.string "user_name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_205448) do
     t.integer "flavor"
     t.integer "mouthfeel"
     t.integer "overall"
+    t.string "user_name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

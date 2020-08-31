@@ -32,6 +32,7 @@ function ShowPost(props) {
 				) : (
 					<div>
 						<h1>{post.title}</h1>
+						<p>By: {post.user_name}</p>
 						<p>{post.content}</p>
 					</div>
 				)}

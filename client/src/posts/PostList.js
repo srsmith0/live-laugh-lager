@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
 import PostListItem from './PostListItem';
 
 export default function PostList({ userId }) {

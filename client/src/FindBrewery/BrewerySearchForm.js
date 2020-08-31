@@ -6,23 +6,33 @@ import { breweryKey } from '../keys';
 import { useFormInput } from '../customHooks/useFormInput';
 import Axios from 'axios';
 import BreweryCard from './BreweryCard';
+import './findBrewery.css';
 
 export default function BrewerySearchForm() {
 	const [ data, setData ] = useState(null);
+	const [ loading, setLoading ] = useState(false);
 
 	const breweryState = useFormInput('', 'state');
 
 	function renderBreweries(breweries) {
-		return (
-			<div>
-				{breweries.map((d) => {
-					return <BreweryCard brewery={d} />;
-				})}
-			</div>
-		);
+		if (loading) {
+			return (
+				<div className="lds-heart">
+					<div />
+				</div>
+			);
+		} else
+			return (
+				<div>
+					{breweries.map((d) => {
+						return <BreweryCard brewery={d} />;
+					})}
+				</div>
+			);
 	}
 
 	const handleSubmit = (e) => {
+		setLoading(true);
 		const brewerySearch =
 			breweryState.value.toLowerCase().charAt(0).toUpperCase() + breweryState.value.toLowerCase().slice(1);
 		Axios.get(`https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_state=${brewerySearch}`, {
@@ -34,8 +44,8 @@ export default function BrewerySearchForm() {
 			.then((res) => {
 				{
 					res.data <= 0 ? alert('No results found') : setData(res.data);
-					console.log(res.data);
 				}
+				setLoading(false);
 			})
 			.catch((err) => {
 				alert('Search failed. Please try again');
