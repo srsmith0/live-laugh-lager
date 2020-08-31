@@ -6,6 +6,7 @@ import PostList from '../posts/PostList';
 import Settings from './Settings';
 import FindBrewery from '../FindBrewery/FindBrewery';
 import ShowFollowers from './ShowFollowers';
+import ShowFollowees from './ShowFollowees';
 
 class Profile extends React.Component {
 	state = { activeItem: 'feed' };
@@ -13,15 +14,15 @@ class Profile extends React.Component {
 	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
 	renderMyPosts = () => {
-		return <PostList user_id={this.props.auth.user.id} />;
+		return <PostList userId={this.props.auth.user.id} />;
 	};
-
-	renderAllPosts() {
-		//TODO list posts of followers and own posts, POSSIBILY DOING THIS IN POSTLIST COMPONENT
-	}
 
 	renderFollowers() {
 		return <ShowFollowers userId={this.props.auth.user.id} />;
+	}
+
+	renderFollowees() {
+		return <ShowFollowees userId={this.props.auth.user.id} />;
 	}
 
 	renderSettings() {
@@ -35,6 +36,9 @@ class Profile extends React.Component {
 
 			case 'followers':
 				return this.renderFollowers();
+
+			case 'users i follow':
+				return this.renderFollowees();
 
 			case 'breweries':
 				return <FindBrewery history={this.props.history} />;
@@ -68,6 +72,12 @@ class Profile extends React.Component {
 								icon="users"
 								name="followers"
 								active={activeItem === 'followers'}
+								onClick={this.handleItemClick}
+							/>
+							<Menu.Item
+								icon="users"
+								name="users i follow"
+								active={activeItem === 'users i follow'}
 								onClick={this.handleItemClick}
 							/>
 							<Menu.Item

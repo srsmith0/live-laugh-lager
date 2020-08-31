@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :update, :destroy]
   
   def index
-    render json: current_user.reviews.all
+    render json: User.find(params[:user_id]).reviews.all
   end
 
   def show
@@ -12,14 +12,14 @@ class Api::ReviewsController < ApplicationController
   def show_all_followed
     followed = []
     Follow.all.each do |f|
-      if f.user_id == current_user.id
+      if f.follower_id == current_user.id
         followed << f
       end
     end
     followed_reviews =[]
     followed.each do |f|
       Review.all.each do |r|
-        if f.follower_id == r.user_id 
+        if f.user_id == r.user_id 
           followed_reviews << r 
         end
       end

@@ -1,6 +1,6 @@
 class Api::FollowersController < ApplicationController
+  
   def create
-
     user = Follower.new(follower_params)
     if user.save
       render json: user

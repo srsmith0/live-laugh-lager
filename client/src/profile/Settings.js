@@ -35,9 +35,7 @@ function Settings(props) {
 
 	function changePassword(e) {
 		e.preventDefault();
-		console.log(e);
 		if (currentPassword === props.auth.user.password && newPassword === copyPassword) {
-			console.log(e);
 			Axios.put(`/api/auth/password`, newPassword);
 			setEditing(!editing);
 		}

@@ -10,6 +10,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :flavor
       t.integer :mouthfeel
       t.integer :overall
+      t.string :user_name
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps

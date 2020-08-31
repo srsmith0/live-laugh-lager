@@ -20,6 +20,23 @@ class Follow < ApplicationRecord
   return usernames
 end
 
-
+def self.sort_followees(find, id)
+  follows = []
+  find.each do |f|
+    if f.follower_id == id
+      follows << f
+  end
+end
+  users = User.all
+  usernames = []
+  follows.each do |f|
+    users.each do |u|
+      if f.user_id == u.id 
+        usernames << u 
+      end
+    end
+end
+return usernames
+end
 
 end

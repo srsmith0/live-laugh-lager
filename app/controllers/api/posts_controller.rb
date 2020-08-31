@@ -1,6 +1,7 @@
 class Api::PostsController < ApplicationController
   def index
-    render json: current_user.posts.all 
+    set_user
+    render json: @user.posts.all 
   end
 
   def show
@@ -11,14 +12,15 @@ class Api::PostsController < ApplicationController
   def show_all_followed
     followed = []
     Follow.all.each do |f|
-      if f.user_id == current_user.id
+      if f.follower_id == current_user.id
         followed << f
       end
     end
+
     followed_posts =[]
     followed.each do |f|
       Post.all.each do |p|
-        if f.follower_id == p.user_id 
+        if f.user_id == p.user_id 
           followed_posts << p 
         end
       end

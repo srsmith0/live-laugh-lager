@@ -16,6 +16,7 @@ import ShowPost from './posts/ShowPost';
 import Settings from './profile/Settings';
 import ShowReview from './posts/ShowReview'
 import FindBrewery from './FindBrewery/FindBrewery'
+import UserPage from './profile/UserPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <ProtectedRoute exact path='/settings' component={Settings} />
         <ProtectedRoute exact path='/profile' component={Profile} />
         <ProtectedRoute exact path='/posts' component={PostList} />
+        <ProtectedRoute exact path='/user/:id' component={UserPage} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
         <ProtectedRoute exact path='/review' component={ReviewForm} />
