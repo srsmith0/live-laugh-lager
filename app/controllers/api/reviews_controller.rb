@@ -52,7 +52,7 @@ end
   
   private
   def review_params
-    params.require(:review).permit(:name, :brewery, :style, :description, :appearance, :aroma, :flavor, :mouthfeel, :overall)
+    params.require(:review).permit(:name, :brewery, :style, :description, :appearance, :aroma, :flavor, :mouthfeel, :user_name, :overall)
   end
 
   def set_review

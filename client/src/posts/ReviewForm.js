@@ -13,7 +13,17 @@ const ReviewForm = (props) => {
 	const [ flavor, setFlavor ] = useState(null);
 	const [ mouthfeel, setMouthfeel ] = useState(null);
 
-	const review = { name, brewery, description, style, appearance: app, aroma, flavor, mouthfeel };
+	const review = {
+		name,
+		brewery,
+		description,
+		style,
+		appearance: app,
+		aroma,
+		flavor,
+		mouthfeel,
+		user_name: props.auth.user.nickname
+	};
 
 	async function handleSubmit(e) {
 		e.preventDefault();
