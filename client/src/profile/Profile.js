@@ -7,6 +7,7 @@ import Settings from './Settings';
 import FindBrewery from '../FindBrewery/FindBrewery';
 import ShowFollowers from './ShowFollowers';
 import ShowFollowees from './ShowFollowees';
+import Footer from '../components/Footer';
 
 class Profile extends React.Component {
 	state = { activeItem: 'feed' };
@@ -55,12 +56,10 @@ class Profile extends React.Component {
 		const { activeItem } = this.state;
 
 		return (
-			<div>
-				<Header style={{ margin: '20px', textAlign: 'center' }} as="h1">
-					Live, Laugh, Lager
-				</Header>
-				<Grid>
-					<Grid.Column width={4}>
+			<div className="background">
+				<h1 className="title">Live, Laugh, Lager</h1>
+				<Grid as="div" className="grid">
+					<Grid.Column width={3}>
 						<Menu fluid vertical tabular>
 							<Menu.Item
 								icon="feed"

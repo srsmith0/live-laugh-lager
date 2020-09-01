@@ -1,0 +1,24 @@
+.pageFooter {
+	width: 100%;
+	height: 160px;
+	background-color: #262626;
+}
+
+.footerContent {
+	color: #cccccc;
+	width: 100%;
+	float: left;
+	margin-right: -250px;
+}
+
+.footerRight {
+	color: #cccccc;
+	width: 250px;
+	height: 100%;
+	float: right;
+}
+
+.pageFooter,
+.footer_push {
+	height: 160px;
+}

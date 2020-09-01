@@ -1,0 +1,53 @@
+.title {
+	padding-top: 2rem;
+	font-family: 'Dancing Script', cursive;
+	font-size: 5rem;
+	text-align: center;
+}
+
+.banner {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.background {
+	background-image: linear-gradient(#a0d2eb, #e5eaf5, #d0bdf4, #8458b3, #a28089);
+	/* background-image: linear-gradient(#e1b382, #c89666, #2d545e, #12343b); */
+	width: max;
+	height: 100%;
+}
+
+.content {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: column wrap;
+}
+
+.button {
+	padding-top: 2rem;
+	text-align: center;
+	flex-shrink: 3;
+}
+
+.text {
+	padding-top: 4rem;
+	align-self: center;
+	padding-left: 4rem;
+}
+
+.homeImage {
+	padding-left: 2rem;
+	margin: 6rem 0 6rem 0;
+	align-self: center;
+	border-radius: 15%;
+}
+
+.headerTitle {
+	font-family: "Dancing Script", cursive;
+	text-align: center;
+	font-size: 3rem;
+}
+
+.headerSub {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}

@@ -1,0 +1,20 @@
+.title {
+	padding-top: 2rem;
+	font-family: 'Dancing Script', cursive;
+	font-size: 5rem;
+	text-align: center;
+}
+
+.banner {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.background {
+	background-image: linear-gradient(#a0d2eb, #e5eaf5, #d0bdf4, #8458b3, #a28089);
+	/* background-image: linear-gradient(#e1b382, #c89666, #2d545e, #12343b); */
+	height: 100rem;
+}
+
+.grid {
+	background-color: transparent;
+}
