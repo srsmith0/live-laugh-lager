@@ -52,64 +52,96 @@ const ReviewForm = (props) => {
 	}
 
 	return (
-		<Form onSubmit={handleSubmit}>
-			<Header as="h2" textAlign="center" style={{ marginTop: '15px' }}>
-				Beer Review
-			</Header>
-			<Segment horizontal>
-				<div style={styles.form}>
-					<Form.Input
-						label="Beer Name"
-						name="name"
-						required
-						value={name}
-						style={{ width: '25%' }}
-						onChange={(e) => setName(e.target.value)}
-					/>
-					<Form.Input
-						label="Brewery Name"
-						name="brewery"
-						required
-						value={brewery}
-						style={{ width: '25%' }}
-						onChange={(e) => setBrewery(e.target.value)}
-					/>
-					<Form.Input
-						label="Style"
-						name="style"
-						value={style}
-						style={{ width: '25%' }}
-						onChange={(e) => setStyle(e.target.value)}
-					/>
-					<Form.TextArea
-						label="Description"
-						name="description"
-						value={description}
-						onChange={(e) => setDescription(e.target.value)}
-					/>
+		<div>
+			<h2 className="reviewHeader">Beer Review</h2>
+			<Form onSubmit={handleSubmit}>
+				<div className="reviewForm">
+					<div className="reviewInputs">
+						<Form.Input
+							label="Beer Name"
+							name="name"
+							required
+							value={name}
+							style={{ width: '70%' }}
+							onChange={(e) => setName(e.target.value)}
+						/>
+						<Form.Input
+							label="Brewery Name"
+							name="brewery"
+							required
+							value={brewery}
+							style={{ width: '70%' }}
+							onChange={(e) => setBrewery(e.target.value)}
+						/>
+						<Form.Input
+							label="Style"
+							name="style"
+							required
+							value={style}
+							style={{ width: '70%' }}
+							onChange={(e) => setStyle(e.target.value)}
+						/>
+						<div className="reviewScores">
+							<div className="reviewScoresAA">
+								<div>
+									<Header as="h4">Appearance</Header>
+									<Rating icon="heart" size="large" onRate={handleApp} rating={app} maxRating={5} />
+								</div>
+								<div>
+									<Header as="h4">Aroma</Header>
+									<Rating
+										icon="heart"
+										size="large"
+										onRate={handleAroma}
+										rating={aroma}
+										maxRating={5}
+									/>
+								</div>
+							</div>
+							<div className="reviewScoresFM">
+								<div>
+									<Header as="h4">Flavor</Header>
+									<Rating
+										icon="heart"
+										size="large"
+										onRate={handleFlavor}
+										rating={flavor}
+										maxRating={5}
+									/>
+								</div>
+								<div>
+									<Header as="h4">Mouthfeel</Header>
+									<Rating
+										icon="heart"
+										size="large"
+										onRate={handleMf}
+										rating={mouthfeel}
+										maxRating={5}
+									/>
+								</div>
+							</div>
+						</div>
+						<div className="beerDescription">
+							<Form.TextArea
+								label="Description"
+								name="description"
+								style={{ width: '80%' }}
+								value={description}
+								onChange={(e) => setDescription(e.target.value)}
+							/>
+						</div>
+					</div>
 				</div>
-				<div style={styles.ranking}>
-					<div>
-						<Header as="h3">Appearance</Header>
-						<Rating icon="heart" onRate={handleApp} rating={app} maxRating={5} />
-					</div>
-					<div>
-						<Header as="h3">Aroma</Header>
-						<Rating icon="heart" onRate={handleAroma} rating={aroma} maxRating={5} />
-					</div>
-					<div>
-						<Header as="h3">Flavor</Header>
-						<Rating icon="heart" onRate={handleFlavor} rating={flavor} maxRating={5} />
-					</div>
-					<div>
-						<Header as="h3">Mouthfeel</Header>
-						<Rating icon="heart" onRate={handleMf} rating={mouthfeel} maxRating={5} />
-					</div>
+				<div className="reviewButtons">
+					<Button color="blue">Submit</Button>
 				</div>
-			</Segment>
-			<Button onClick={props.history.goBack}>Go Back</Button>
-			<Button>Submit</Button>
-		</Form>
+			</Form>
+			<div className="reviewButtons" style={{ paddingBottom: '2rem' }}>
+				<Button color="blue" onClick={props.history.goBack}>
+					Go Back
+				</Button>
+			</div>
+		</div>
 	);
 };
 

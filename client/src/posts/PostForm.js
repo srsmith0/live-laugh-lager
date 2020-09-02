@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form } from '../components/Form';
 import TextInput from '../components/TextInput';
 import { useFormInput } from '../customHooks/useFormInput';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import Axios from 'axios';
 import { AuthConsumer } from '../providers/AuthProvider';
 
@@ -24,14 +24,24 @@ function PostForm(props) {
 
 	return (
 		<div>
-			<Form header="Add a Post" onSubmit={handleSubmit}>
-				<TextInput label="Title" useFormInput={title} />
-				<br />
-				<TextInput label="Content" useFormInput={content} textarea required />
-				<Button style={{ marginTop: '10px' }}>Submit</Button>
+			<h1 className="postHeader">Add a Post</h1>
+			<Form onSubmit={handleSubmit}>
+				<div className="postForm">
+					<div className="postInputs">
+						<TextInput label="Title" useFormInput={title} />
+						<br />
+						<TextInput label="Content" useFormInput={content} textarea required />
+					</div>
+				</div>
+				<div className="postButtons">
+					<Button color="blue">Submit</Button>
+				</div>
 			</Form>
-			<br />
-			<Button onClick={props.history.goBack}>Go Back</Button>
+			<div className="postButtons">
+				<Button color="blue" onClick={props.history.goBack}>
+					Go Back
+				</Button>
+			</div>
 		</div>
 	);
 }

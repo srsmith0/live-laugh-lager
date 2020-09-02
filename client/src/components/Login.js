@@ -1,62 +1,61 @@
 import React from 'react';
+import './HomeLogin.css';
 import { AuthConsumer } from '../providers/AuthProvider';
 import { Button, Form, Segment, Header } from 'semantic-ui-react';
 
 class Login extends React.Component {
+	state = { email: '0-test@test.com', password: '123456' };
 
-  state = { email: '0-test@test.com', password: '123456' }
+	handleSubmit = (e) => {
+		const { email, password } = this.state;
+		this.props.closeModal(!this.props.modal);
+		this.props.auth.handleLogin({ email, password }, this.props.history);
+	};
 
-  handleSubmit = (e) => {
-    const { email, password } = this.state;
-    this.props.auth.handleLogin({ email, password }, this.props.history);
-  }
+	handleChange = (e) => {
+		const { name, value } = e.target;
+		this.setState({ [name]: value });
+	};
 
-  handleChange= (e) => {
-    const { name, value } = e.target;
-    this.setState ({ [name]: value });
-  }
+	render() {
+		const { email, password } = this.state;
 
-  render () {
-    const { email, password } = this.state 
-
-    return (
-      <Segment>
-        <Header as='h1' textAlign='center'>Live, Laugh, Lager</Header>
-        <Header as='h3' textAlign='center'>Login</Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input
-          label='Email'
-          autoFocus
-          required
-          name='email'
-          value={email}
-          placeholder='Email'
-          onChange={this.handleChange}
-          />
-          <Form.Input
-          label='Password'
-          required
-          name='password'
-          type='password'
-          value={password}
-          placeholder='Password'
-          onChange={this.handleChange}
-          />
-          <Segment textAlign='center' basic>
-            <Button primary type='submit'>Submit</Button>
-          </Segment>
-        </Form>
-      </Segment>
-    )
-  }
+		return (
+			<Segment basic>
+				<h1 className="headerTitle">Live, Laugh, Lager</h1>
+				<h3 className="headerSub">Login</h3>
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Input
+						label="Email"
+						autoFocus
+						required
+						name="email"
+						value={email}
+						placeholder="Email"
+						onChange={this.handleChange}
+					/>
+					<Form.Input
+						label="Password"
+						required
+						name="password"
+						type="password"
+						value={password}
+						placeholder="Password"
+						onChange={this.handleChange}
+					/>
+					<Segment textAlign="center" basic>
+						<Button primary type="submit" color="teal">
+							Submit
+						</Button>
+					</Segment>
+				</Form>
+			</Segment>
+		);
+	}
 }
 
 export default class ConnectedLogin extends React.Component {
-  render () {
-    return (
-      <AuthConsumer>
-        { auth => <Login {...this.props} auth={auth} />}
-      </AuthConsumer>
-    )
-  }
+	render() {
+		return <AuthConsumer>{(auth) => <Login {...this.props} auth={auth} />}</AuthConsumer>;
+	}
 }

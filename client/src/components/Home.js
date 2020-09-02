@@ -1,25 +1,57 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
-import beer from '../images/beer.jpg';
+import React, { useState } from 'react';
+import './HomeLogin.css';
+import { Button, Modal } from 'semantic-ui-react';
 import { AuthConsumer } from '../providers/AuthProvider';
+import Register from './Register';
+import Login from './Login';
 
 function Home(props) {
+	const [ openRegister, setOpenRegister ] = useState(false);
+	const [ openLogin, setOpenLogin ] = useState(false);
+
 	return (
-		<div style={background}>
-			<h1 style={{ textAlign: 'center' }}>Welcome to Live, Laugh, Lager</h1>
-			<h3 style={{ textAlign: 'center' }}>Your one stop for beer reviews, beer posts, and brewery locator</h3>
-			{props.auth.user ? null : (
-				<div style={button}>
-					<Button as={Link} to="/register">
-						Register
-					</Button>
-					<Button as={Link} to="/login">
-						Login
-					</Button>
+		<>
+		<div className="background">
+			<h1 className="title">Live, Laugh, Lager</h1>
+			<div className="content">
+				<div className="text">
+					<h3 className="banner">
+						Gather with friends to share beer reviews, posts, and find your favorite breweries.
+					</h3>
+					{props.auth.user ? null : (
+						<div className="button">
+							<Modal
+								closeIcon
+								open={openRegister}
+								trigger={
+									<Button size="huge" color="yellow">
+										Register
+									</Button>
+								}
+								onClose={() => setOpenRegister(false)}
+								onOpen={() => setOpenRegister(true)}
+							>
+								<Modal.Content>
+									<Register {...props} modal={openRegister} closeModal={setOpenRegister} />
+								</Modal.Content>
+							</Modal>
+							<Modal
+								closeIcon
+								open={openLogin}
+								trigger={<Button size="huge" color="yellow">Login</Button>}
+								onClose={() => setOpenLogin(false)}
+								onOpen={() => setOpenLogin(true)}
+							>
+								<Modal.Content>
+									<Login {...props} modal={openLogin} closeModal={setOpenLogin} />
+								</Modal.Content>
+							</Modal>
+						</div>
+					)}
 				</div>
-			)}
+			</div>
 		</div>
+			</>
 	);
 }
 
@@ -28,19 +60,3 @@ function ConnectedHome(props) {
 }
 
 export default ConnectedHome;
-
-const button = {
-	display: 'flex',
-	justifyContent: 'center',
-	paddingTop: '20px'
-};
-
-const background = {
-	// backgroundImage: `url(${beer})`,
-	background: '#ffe999',
-	width: '110em',
-	height: '75em',
-	backgroundSize: 'cover',
-	margin: '0',
-	backgroundRepeat: 'noRepeat'
-};

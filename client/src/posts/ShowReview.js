@@ -40,28 +40,68 @@ function ShowReview(props) {
 					/>
 				) : (
 					<div>
-						<h1>{review.name}</h1>
-						<h3>Brewery: {review.brewery}</h3>
-						<h3>Style: {review.style}</h3>
-						<p>Description: {review.description}</p>
-						Appearance:
-						<Rating icon="heart" defaultRating={review.appearance} maxRating={5} size="tiny" disabled />
-						Aroma: <Rating icon="heart" defaultRating={review.aroma} maxRating={5} size="tiny" disabled />
-						Flavor: <Rating icon="heart" defaultRating={review.flavor} maxRating={5} size="tiny" disabled />
-						Mouthfeel:
-						<Rating icon="heart" defaultRating={review.mouthfeel} maxRating={5} size="tiny" disabled />
-						Overall:
-						<Rating icon="heart" defaultRating={review.overall} maxRating={5} size="massive" disabled />
+						<h1 className="reviewHeader">{review.name}</h1>
+						<h4 className="bannerProfile" style={{ textAlign: 'center' }}>
+							By: {review.user_name}
+						</h4>
+						<div className="reviewShow">
+							<div className="breweryInfo">
+								<h3>Brewery: {review.brewery}</h3>
+								<h3>Style: {review.style}</h3>
+							</div>
+							<div className="scores">
+								Appearance:
+								<Rating
+									icon="heart"
+									defaultRating={review.appearance}
+									maxRating={5}
+									size="small"
+									disabled
+								/>
+								Aroma:
+								<Rating icon="heart" defaultRating={review.aroma} maxRating={5} size="small" disabled />
+								Flavor:
+								<Rating
+									icon="heart"
+									defaultRating={review.flavor}
+									maxRating={5}
+									size="small"
+									disabled
+								/>
+								Mouthfeel:
+								<Rating
+									icon="heart"
+									defaultRating={review.mouthfeel}
+									maxRating={5}
+									size="small"
+									disabled
+								/>
+								Overall:
+								<Rating
+									icon="heart"
+									defaultRating={review.overall}
+									maxRating={5}
+									size="massive"
+									disabled
+								/>
+							</div>
+							<div className="reviewDescription">
+								<h3>Description:</h3>
+								<p>{review.description}</p>
+							</div>
+						</div>
 					</div>
 				)}
 				<br />
-				{props.auth.user.id === review.user_id ? (
-					<div>
-						<Button onClick={() => setEditing(!editing)}>Edit</Button>
-						<Button onClick={() => deleteReview()}>Delete</Button>
-					</div>
-				) : null}
-				<Button onClick={props.history.goBack}>Go Back</Button>
+				<div className="reviewButtons">
+					{props.auth.user.id === review.user_id ? (
+						<div>
+							<Button onClick={() => setEditing(!editing)}>Edit</Button>
+							<Button onClick={() => deleteReview()}>Delete</Button>
+						</div>
+					) : null}
+					<Button onClick={props.history.goBack}>Go Back</Button>
+				</div>
 			</div>
 		);
 	} else {
