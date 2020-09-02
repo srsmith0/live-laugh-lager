@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form } from '../components/Form';
 import TextInput from '../components/TextInput';
 import { useFormInput } from '../customHooks/useFormInput';
-import { Button, Segment } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import Axios from 'axios';
 import { AuthConsumer } from '../providers/AuthProvider';
 
@@ -15,7 +15,7 @@ function PostForm(props) {
 	const handleSubmit = (e) => {
 		Axios.post(`/api/users/${props.auth.user.id}/posts`, post)
 			.then((res) => {
-				props.history.push('/profile');
+				props.handleItemClick(e, { name: 'feed' });
 			})
 			.catch((err) => {
 				console.log(err);
@@ -29,9 +29,9 @@ function PostForm(props) {
 				<br />
 				<TextInput label="Content" useFormInput={content} textarea required />
 				<Button style={{ marginTop: '10px' }}>Submit</Button>
+				<Button onClick={props.history.goBack}>Go Back</Button>
 			</Form>
 			<br />
-			<Button onClick={props.history.goBack}>Go Back</Button>
 		</div>
 	);
 }

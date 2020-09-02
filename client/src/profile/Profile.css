@@ -1,20 +1,78 @@
-.title {
+.titleProfile {
 	padding-top: 2rem;
 	font-family: 'Dancing Script', cursive;
 	font-size: 5rem;
 	text-align: center;
 }
 
-.banner {
+.bannerProfile {
 	font-family: 'Montserrat', sans-serif;
 }
 
 .background {
 	background-image: linear-gradient(#a0d2eb, #e5eaf5, #d0bdf4, #8458b3, #a28089);
+	background-repeat: repeat;
+
 	/* background-image: linear-gradient(#e1b382, #c89666, #2d545e, #12343b); */
-	height: 100rem;
 }
 
 .grid {
-	background-color: transparent;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.gridContent {
+	text-align: left !important;
+	width: 50rem;
+}
+
+.reviewHeader {
+	text-align: center;
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 3rem;
+	padding: 2rem 0 2rem 0;
+}
+
+.reviewForm {
+	display: flex;
+	justify-content: center;
+	background-color: whitesmoke;
+	margin: 0 6rem 0 6em;
+	border: grey 0.1rem solid;
+}
+.reviewScores {
+	display: flex;
+	justify-content: flex-start;
+	align-content: flex-end;
+}
+.reviewScoresAA {
+	display: flex;
+	justify-content: flex-start;
+	flex-flow: column wrap;
+	flex-grow: 1;
+}
+
+.reviewScoresFM {
+	display: flex;
+	align-self: center;
+	flex-flow: column wrap;
+	flex-grow: 2;
+}
+
+.reviewInputs {
+	padding-top: 1rem;
+	display: flex;
+	flex-basis: 50%;
+	justify-content: center;
+	flex-flow: column wrap;
+}
+
+.reviewButtons {
+	display: flex;
+	justify-content: center;
+	margin-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+.beerDescription {
+	padding-bottom: 2rem;
 }

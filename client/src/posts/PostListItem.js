@@ -26,7 +26,9 @@ export default function PostListItem({ item, userId }) {
 					{item.title ? item.title : `${item.name} Review`}
 				</Link>
 			</h1>
+			<p>{item.overall && `Rating: ${item.overall}`}</p>
 			<p>Author: {item.user_name} </p>
+			<hr />
 		</div>
 	);
 }

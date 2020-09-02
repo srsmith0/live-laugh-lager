@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header, Menu, Dropdown, Grid, Segment } from 'semantic-ui-react';
+import './Profile.css';
+import { Header, Menu, Dropdown, Grid, Segment, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
@@ -7,6 +8,8 @@ import Settings from './Settings';
 import FindBrewery from '../FindBrewery/FindBrewery';
 import ShowFollowers from './ShowFollowers';
 import ShowFollowees from './ShowFollowees';
+import ReviewForm from '../posts/ReviewForm';
+import PostForm from '../posts/PostForm';
 import Footer from '../components/Footer';
 
 class Profile extends React.Component {
@@ -26,6 +29,19 @@ class Profile extends React.Component {
 		return <ShowFollowees userId={this.props.auth.user.id} />;
 	}
 
+	renderAdd() {
+		return (
+			<div>
+				<Button as={Link} to="/post">
+					Add Post
+				</Button>
+				<Button as={Link} to="/review">
+					Add Review
+				</Button>
+			</div>
+		);
+	}
+
 	renderSettings() {
 		return <Settings />;
 	}
@@ -40,6 +56,12 @@ class Profile extends React.Component {
 
 			case 'users i follow':
 				return this.renderFollowees();
+
+			case 'add review':
+				return <ReviewForm props={this.props} handleItemClick={this.handleItemClick} />;
+
+			case 'add post':
+				return <PostForm props={this.props} handleItemClick={this.handleItemClick} />;
 
 			case 'breweries':
 				return <FindBrewery history={this.props.history} />;
@@ -56,10 +78,10 @@ class Profile extends React.Component {
 		const { activeItem } = this.state;
 
 		return (
-			<div className="background">
-				<h1 className="title">Live, Laugh, Lager</h1>
-				<Grid as="div" className="grid">
-					<Grid.Column width={3}>
+			<div>
+				<h1 className="titleProfile">Live, Laugh, Lager</h1>
+				<Grid textAlign="center" className="grid">
+					<Grid.Column mobile="6" computer="3">
 						<Menu fluid vertical tabular>
 							<Menu.Item
 								icon="feed"
@@ -79,22 +101,14 @@ class Profile extends React.Component {
 								active={activeItem === 'users i follow'}
 								onClick={this.handleItemClick}
 							/>
+							<Menu.Item icon="write" name="add review" as={Link} to="/review" />
+							<Menu.Item icon="write" name="add post" as={Link} to="/post" />
 							<Menu.Item
 								icon="find"
 								name="breweries"
 								active={activeItem === 'breweries'}
 								onClick={this.handleItemClick}
-							/>{' '}
-							<Dropdown item icon="add" text="Add">
-								<Dropdown.Menu>
-									<Dropdown.Item as={Link} to="/review" props={this.props}>
-										Review
-									</Dropdown.Item>
-									<Dropdown.Item as={Link} to="/post" props={this.props}>
-										Post
-									</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
+							/>
 							<Menu.Item
 								name="settings"
 								icon="settings"
@@ -103,8 +117,7 @@ class Profile extends React.Component {
 							/>
 						</Menu>
 					</Grid.Column>
-
-					<Grid.Column stretched width={12}>
+					<Grid.Column className="gridContent" width={8}>
 						<Segment>{this.renderOptions(activeItem)}</Segment>
 					</Grid.Column>
 				</Grid>

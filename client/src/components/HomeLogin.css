@@ -1,19 +1,24 @@
 .title {
-	padding-top: 2rem;
+	padding-top: 11rem;
 	font-family: 'Dancing Script', cursive;
-	font-size: 5rem;
+	font-size: 7rem;
 	text-align: center;
+	color: whitesmoke;
 }
 
 .banner {
 	font-family: 'Montserrat', sans-serif;
+	font-size: 2rem;
+	color: white;
+	text-align: center;
 }
 
 .background {
-	background-image: linear-gradient(#a0d2eb, #e5eaf5, #d0bdf4, #8458b3, #a28089);
+	background-image: url('../images/home.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 60rem;
 	/* background-image: linear-gradient(#e1b382, #c89666, #2d545e, #12343b); */
-	width: max;
-	height: 100%;
 }
 
 .content {

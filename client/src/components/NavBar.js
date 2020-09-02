@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthConsumer } from '../providers/AuthProvider';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Dropdown } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 
 class NavBar extends React.Component {
@@ -50,5 +50,5 @@ class ConnectedNavBar extends React.Component {
 export default withRouter(ConnectedNavBar);
 
 const background = {
-	background: 'linear-gradient(#ffc9ea, 30%,  #e5eaf5)'
+	background: 'linear-gradient(#ffd952, 30%,  #ffeeb3)'
 };

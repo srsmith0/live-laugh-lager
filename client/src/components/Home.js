@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './HomeLogin.css';
 import { Button, Modal } from 'semantic-ui-react';
-import home from '../images/home.jpg';
 import { AuthConsumer } from '../providers/AuthProvider';
 import Register from './Register';
 import Login from './Login';
@@ -12,6 +11,7 @@ function Home(props) {
 	const [ openLogin, setOpenLogin ] = useState(false);
 
 	return (
+		<>
 		<div className="background">
 			<h1 className="title">Live, Laugh, Lager</h1>
 			<div className="content">
@@ -25,7 +25,7 @@ function Home(props) {
 								closeIcon
 								open={openRegister}
 								trigger={
-									<Button color="teal" modal={openRegister} closeModal={setOpenRegister}>
+									<Button size="huge" color="yellow" modal={openRegister} closeModal={setOpenRegister}>
 										Register
 									</Button>
 								}
@@ -39,7 +39,7 @@ function Home(props) {
 							<Modal
 								closeIcon
 								open={openLogin}
-								trigger={<Button color="teal">Login</Button>}
+								trigger={<Button size="huge" color="yellow">Login</Button>}
 								onClose={() => setOpenLogin(false)}
 								onOpen={() => setOpenLogin(true)}
 							>
@@ -50,10 +50,9 @@ function Home(props) {
 						</div>
 					)}
 				</div>
-				<img className="homeImage" width="70%" height="70%" src={home} />
 			</div>
-			<Footer />
 		</div>
+			</>
 	);
 }
 
