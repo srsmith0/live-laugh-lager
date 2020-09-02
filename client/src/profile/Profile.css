@@ -69,10 +69,62 @@
 .reviewButtons {
 	display: flex;
 	justify-content: center;
-	margin-top: 3rem;
-	padding-bottom: 3rem;
+	margin-top: 2rem;
 }
 
 .beerDescription {
 	padding-bottom: 2rem;
+}
+
+.postHeader {
+	text-align: center;
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 3rem;
+	padding: 2rem 0 2rem 0;
+}
+
+.postForm {
+	display: flex;
+	justify-content: center;
+	background-color: whitesmoke;
+	margin: 0 6rem 0 6em;
+	border: grey 0.1rem solid;
+	padding-bottom: 2rem;
+}
+
+.postInputs {
+	display: flex;
+	flex-flow: column;
+}
+.postButtons {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.reviewShow {
+	text-align: center;
+	display: flex;
+	flex-flow: column wrap;
+	background-color: whitesmoke;
+	justify-content: center;
+	margin: 0 6rem 0 6em;
+	border: grey 0.1rem solid;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.breweryInfo {
+	align-self: center;
+}
+
+.scores {
+	align-self: center;
+	display: flex;
+	flex-flow: column wrap;
+	padding-top: 2rem;
+}
+
+.reviewDescription {
+	align-self: center;
+	padding: 2rem 0 2rem 0;
 }

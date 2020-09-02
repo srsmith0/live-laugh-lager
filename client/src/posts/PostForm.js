@@ -15,7 +15,7 @@ function PostForm(props) {
 	const handleSubmit = (e) => {
 		Axios.post(`/api/users/${props.auth.user.id}/posts`, post)
 			.then((res) => {
-				props.handleItemClick(e, { name: 'feed' });
+				props.history.push('/profile');
 			})
 			.catch((err) => {
 				console.log(err);
@@ -24,14 +24,24 @@ function PostForm(props) {
 
 	return (
 		<div>
-			<Form header="Add a Post" onSubmit={handleSubmit}>
-				<TextInput label="Title" useFormInput={title} />
-				<br />
-				<TextInput label="Content" useFormInput={content} textarea required />
-				<Button style={{ marginTop: '10px' }}>Submit</Button>
-				<Button onClick={props.history.goBack}>Go Back</Button>
+			<h1 className="postHeader">Add a Post</h1>
+			<Form onSubmit={handleSubmit}>
+				<div className="postForm">
+					<div className="postInputs">
+						<TextInput label="Title" useFormInput={title} />
+						<br />
+						<TextInput label="Content" useFormInput={content} textarea required />
+					</div>
+				</div>
+				<div className="postButtons">
+					<Button color="blue">Submit</Button>
+				</div>
 			</Form>
-			<br />
+			<div className="postButtons">
+				<Button color="blue" onClick={props.history.goBack}>
+					Go Back
+				</Button>
+			</div>
 		</div>
 	);
 }

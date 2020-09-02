@@ -63,7 +63,7 @@ class Profile extends React.Component {
 			case 'add post':
 				return <PostForm props={this.props} handleItemClick={this.handleItemClick} />;
 
-			case 'breweries':
+			case 'find breweries':
 				return <FindBrewery history={this.props.history} />;
 
 			case 'settings':
@@ -105,8 +105,8 @@ class Profile extends React.Component {
 							<Menu.Item icon="write" name="add post" as={Link} to="/post" />
 							<Menu.Item
 								icon="find"
-								name="breweries"
-								active={activeItem === 'breweries'}
+								name="find breweries"
+								active={activeItem === 'find breweries'}
 								onClick={this.handleItemClick}
 							/>
 							<Menu.Item

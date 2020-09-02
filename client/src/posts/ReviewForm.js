@@ -28,7 +28,7 @@ const ReviewForm = (props) => {
 	async function handleSubmit(e) {
 		e.preventDefault();
 		let res = await Axios.post(`/api/users/${props.auth.user.id}/reviews`, review);
-		props.handleItemClick(e, { name: 'feed' });
+		props.history.push('/profile');
 	}
 
 	function handleApp(e, app) {
@@ -134,11 +134,13 @@ const ReviewForm = (props) => {
 				</div>
 				<div className="reviewButtons">
 					<Button color="blue">Submit</Button>
-					<Button color="blue" onClick={props.history.goBack}>
-						Go Back
-					</Button>
 				</div>
 			</Form>
+			<div className="reviewButtons" style={{ paddingBottom: '2rem' }}>
+				<Button color="blue" onClick={props.history.goBack}>
+					Go Back
+				</Button>
+			</div>
 		</div>
 	);
 };

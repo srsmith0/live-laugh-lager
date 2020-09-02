@@ -60,8 +60,8 @@ export default function EditReview(props) {
 			<Form header="Edit Review" onSubmit={handleEdit}>
 				<TextInput label="Beer Name" useFormInput={name} value={name} />
 				<br />
-				<TextInput label="Brewery" useFormInput={brewery} value={brewery} textarea />
-				<TextInput label="Style" useFormInput={style} value={style} textarea />
+				<TextInput label="Brewery" useFormInput={brewery} value={brewery} />
+				<TextInput label="Style" useFormInput={style} value={style} />
 				<TextInput label="Description" useFormInput={description} value={description} textarea />
 				Appearance:
 				<Rating icon="heart" onRate={handleApp} rating={app} maxRating={5} size="tiny" />

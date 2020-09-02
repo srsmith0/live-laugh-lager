@@ -11,7 +11,7 @@ function CommentList(props) {
 
 	useEffect(() => {
 		setTimeout(() => {
-			Axios.get(`/api/users/${props.user_id}/posts/${props.post_id}/comments`).then((res) => {
+			Axios.get(`/api/users/${props.userId}/posts/${props.postId}/comments`).then((res) => {
 				setComments(res.data);
 			});
 		}, 100);
@@ -22,7 +22,7 @@ function CommentList(props) {
 	}
 
 	const editComment = (comment) => {
-		Axios.put(`/api/users/${props.userId}/posts/${props.post_id}/comments/${comment.id}`, comment).then((res) => {
+		Axios.put(`/api/users/${props.userId}/posts/${props.postId}/comments/${comment.id}`, comment).then((res) => {
 			const updateComment = comments.map((c) => {
 				if (c.id === comment.id) return res.data;
 				return c;
@@ -32,7 +32,7 @@ function CommentList(props) {
 	};
 
 	function deleteComment(comment) {
-		Axios.delete(`/api/users/${comment.user_id}/posts/${comment.post_id}/comments/${comment.id}`).then((res) => {
+		Axios.delete(`/api/users/${comment.userId}/posts/${comment.postId}/comments/${comment.id}`).then((res) => {
 			const newComments = comments.filter((c) => c.id !== comment.id);
 			setComments(newComments);
 		});
@@ -43,7 +43,7 @@ function CommentList(props) {
 			<Comment
 				editComment={editComment}
 				deleteComment={deleteComment}
-				userId={props.user_id}
+				userId={props.userId}
 				addComment={addComment}
 				comment={c}
 			/>
@@ -70,8 +70,8 @@ function CommentList(props) {
 			<Button onClick={() => setCommentForm(!commentForm)}>Add Comment</Button>
 			{commentForm ? (
 				<CommentForm
-					user_id={props.user_id}
-					post_id={props.post_id}
+					user_id={props.userId}
+					post_id={props.postId}
 					comments={comments}
 					commentForm={commentForm}
 					setCommentForm={setCommentForm}

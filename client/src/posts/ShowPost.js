@@ -10,16 +10,16 @@ function ShowPost(props) {
 	const [ editing, setEditing ] = useState(false);
 	const [ post, setPost ] = useState(null);
 	const { id } = useParams();
-	const { user_id } = props.location.state;
+	const { userId } = props.location.state;
 
 	useEffect(() => {
-		Axios.get(`/api/users/${user_id}/posts/${id}`).then((res) => {
+		Axios.get(`/api/users/${userId}/posts/${id}`).then((res) => {
 			setPost(res.data);
 		});
 	}, []);
 
 	const deletePost = () => {
-		Axios.delete(`/api/users/${user_id}/posts/${id}`).then((res) => {
+		Axios.delete(`/api/users/${userId}/posts/${id}`).then((res) => {
 			props.history.push('/profile');
 		});
 	};
@@ -43,7 +43,7 @@ function ShowPost(props) {
 					</div>
 				) : null}
 				<div>
-					<CommentList post_id={id} user_id={user_id} />
+					<CommentList postId={id} userId={userId} />
 				</div>
 				<Button onClick={props.history.goBack}>Go Back</Button>
 			</div>

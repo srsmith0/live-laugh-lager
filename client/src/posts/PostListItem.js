@@ -13,12 +13,12 @@ export default function PostListItem({ item, userId }) {
 						item.title ? (
 							{
 								pathname: `/post/${item.id}`,
-								state: { userId: userId }
+								state: { userId: item.user_id }
 							}
 						) : (
 							{
 								pathname: `/review/${item.id} `,
-								state: { userId: userId }
+								state: { userId: item.user_id }
 							}
 						)
 					}

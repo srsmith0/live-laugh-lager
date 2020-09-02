@@ -4,7 +4,6 @@ import { Button, Modal } from 'semantic-ui-react';
 import { AuthConsumer } from '../providers/AuthProvider';
 import Register from './Register';
 import Login from './Login';
-import Footer from './Footer';
 
 function Home(props) {
 	const [ openRegister, setOpenRegister ] = useState(false);
@@ -25,7 +24,7 @@ function Home(props) {
 								closeIcon
 								open={openRegister}
 								trigger={
-									<Button size="huge" color="yellow" modal={openRegister} closeModal={setOpenRegister}>
+									<Button size="huge" color="yellow">
 										Register
 									</Button>
 								}
@@ -33,7 +32,7 @@ function Home(props) {
 								onOpen={() => setOpenRegister(true)}
 							>
 								<Modal.Content>
-									<Register />
+									<Register {...props} modal={openRegister} closeModal={setOpenRegister} />
 								</Modal.Content>
 							</Modal>
 							<Modal
@@ -44,7 +43,7 @@ function Home(props) {
 								onOpen={() => setOpenLogin(true)}
 							>
 								<Modal.Content>
-									<Login modal={openLogin} closeModal={setOpenLogin} />
+									<Login {...props} modal={openLogin} closeModal={setOpenLogin} />
 								</Modal.Content>
 							</Modal>
 						</div>
