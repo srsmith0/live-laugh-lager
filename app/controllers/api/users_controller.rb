@@ -6,17 +6,11 @@ class Api::UsersController < ApplicationController
     render json: user 
   end
 
-  
   def find_user
     users = User.all 
-    @user = users.find { |user| user.nickname.include?(params[:nickname])}
+    @user = users.find_by(nickname: params[:nickname])
     render json: @user
   end
-
-  def show
-    render json: User.find(params[:id])
-  end
-
 
   def update
     if current_user.update (user_params)

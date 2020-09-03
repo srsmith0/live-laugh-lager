@@ -39,4 +39,15 @@ end
 return usernames
 end
 
+def self.set_follows(id)
+  follows = [] 
+  Follow.all.each do |f|
+    if f.follower_id == id
+      follows << f 
+    end
+  end
+  return follows
+end
+
+
 end

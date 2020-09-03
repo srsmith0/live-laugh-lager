@@ -21,11 +21,15 @@ export default function EditPost(props) {
 	};
 
 	return (
-		<Form header="Edit Post" onSubmit={handleEdit}>
-			<TextInput label="Title" useFormInput={title} value={title} />
-			<br />
-			<TextInput label="Content" useFormInput={content} value={content} textarea />
-			<Button style={{ marginTop: '10px' }}>Finish</Button>
+		<Form onSubmit={handleEdit}>
+			<div style={{ textAlign: 'center' }}>
+				<TextInput label="Title" useFormInput={title} value={title} />
+				<br />
+				<TextInput label="Content" useFormInput={content} value={content} textarea />
+				<Button color="green" style={{ marginTop: '10px' }}>
+					Finish
+				</Button>
+			</div>
 		</Form>
 	);
 }

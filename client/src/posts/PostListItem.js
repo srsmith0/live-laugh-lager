@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Axios from 'axios';
 
 export default function PostListItem({ item, userId }) {
-	const [ name, setName ] = useState('');
-
 	return (
 		<div key={item.content ? `post-${item.id}` : `review-${item.id}`}>
 			<h1>
@@ -28,7 +25,7 @@ export default function PostListItem({ item, userId }) {
 			</h1>
 			<p>{item.overall && `Rating: ${item.overall}`}</p>
 			<p>Author: {item.user_name} </p>
-			<hr />
+			<hr className="hr1" />
 		</div>
 	);
 }

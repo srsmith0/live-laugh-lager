@@ -3,7 +3,7 @@ import { Card, Icon } from 'semantic-ui-react';
 
 export default function BreweryCard({ brewery }) {
 	return (
-		<Card key={brewery.id}>
+		<Card key={brewery.id} className="brewCard">
 			<Card.Content>
 				<Card.Header>{brewery.name}</Card.Header>
 				<Card.Meta>
@@ -14,11 +14,17 @@ export default function BreweryCard({ brewery }) {
 				</Card.Description>
 			</Card.Content>
 			<Card.Content>
-				<Icon name="phone" /> <Icon name="world" />
 				<div>
-					{brewery.phone.slice(0, 3)}-{brewery.phone.slice(3, 6)}-{brewery.phone.slice(6, 10)}
+					<Icon name="phone" />
+					{brewery.phone ? (
+						`${brewery.phone.slice(0, 3)}-${brewery.phone.slice(3, 6)}-${brewery.phone.slice(6, 10)}`
+					) : (
+						'Phone Number Unavailable'
+					)}
+
 					<br />
-					<a href={brewery.website_url}>{brewery.website_url}</a>
+					<Icon name="world" />
+					<a href={brewery.website_url}>{brewery.website_url ? brewery.website_url : ''}</a>
 				</div>
 			</Card.Content>
 		</Card>

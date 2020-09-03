@@ -133,7 +133,7 @@ const ReviewForm = (props) => {
 					</div>
 				</div>
 				<div className="reviewButtons">
-					<Button color="blue">Submit</Button>
+					<Button color="green">Submit</Button>
 				</div>
 			</Form>
 			<div className="reviewButtons" style={{ paddingBottom: '2rem' }}>

@@ -20,8 +20,8 @@ export default function CommentForm(props) {
 	return (
 		<div>
 			<Form onSubmit={addComment}>
-				<TextInput useFormInput={content} textarea />
-				<Button>Submit</Button>
+				<TextInput required useFormInput={content} textarea />
+				<Button color="green">Submit</Button>
 			</Form>
 		</div>
 	);

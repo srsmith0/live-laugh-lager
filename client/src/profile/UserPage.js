@@ -8,6 +8,7 @@ function UserPage(props) {
 	const [ posts, setPosts ] = useState([]);
 	const [ reviews, setReviews ] = useState([]);
 	const [ follow, setFollow ] = useState({});
+	const [ success, setSuccess ] = useState('');
 	const { user } = props.location.state;
 
 	useEffect(() => {
@@ -36,8 +37,31 @@ function UserPage(props) {
 
 	function unFollow() {
 		Axios.delete(`/api/follows/${follow.id}`, follow).then((res) => {
-			props.history.push('/profile');
+			getFollow();
 		});
+	}
+
+	function followUser(userName) {
+		Axios.get(`/api/user/${userName}`)
+			.then((res) => {
+				Axios.post(`/api/user/${res.data.id}/follow/${props.auth.user.id}`, {
+					user_id: res.data.id,
+					follower_id: props.auth.user.id
+				}).then((res) => {
+					{
+						res.data.message ? alert(`${res.data.message}`) : setSuccess(`Now following ${userName}`);
+					}
+					getFollow();
+				});
+			})
+			.catch((err) => {
+				alert('User does not exist');
+			});
+		setTimeout(emptySuccess, 3000);
+	}
+
+	function emptySuccess() {
+		setSuccess('');
 	}
 
 	function compare(a, b) {
@@ -58,13 +82,36 @@ function UserPage(props) {
 
 	if (props.auth.user) {
 		return (
-			<div>
-				{user.id === props.auth.user.id ? <h1>My Posts and Reviews</h1> : <h1>{user.nickname}</h1>}
-				{user.id !== props.auth.user.id ? (
-					<Button color="orange" onClick={() => unFollow()}>
-						Unfollow
+			<div className="showUser">
+				{user.id === props.auth.user.id ? (
+					<div className="userTop">
+						<h1 className="showUserHeader">My Posts and Reviews</h1>
+						<h3 className="userName">Name: {user.name}</h3>
+					</div>
+				) : (
+					<div className="userTop">
+						<h1 className="showUserHeader">{user.nickname}</h1>
+						<h3 className="userName">Name: {user.name}</h3>
+					</div>
+				)}
+				<div className="followButtons">
+					<Button color="blue" onClick={props.history.goBack}>
+						Go Back
 					</Button>
-				) : null}
+					<br />
+					{follow && user.id !== props.auth.user.id ? (
+						<Button color="orange" onClick={() => unFollow()}>
+							Unfollow
+						</Button>
+					) : null}
+					{!follow ? (
+						<Button color="grey" onClick={() => followUser(user.nickname)}>
+							Follow
+						</Button>
+					) : null}
+					<br />
+					{success != '' ? `${success}` : null}
+				</div>
 				{sortedPosts.map((p) => <PostListItem userId={user.id} item={p} />)}
 			</div>
 		);

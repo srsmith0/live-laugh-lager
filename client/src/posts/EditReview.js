@@ -57,23 +57,37 @@ export default function EditReview(props) {
 
 	return (
 		<div>
-			<Form header="Edit Review" onSubmit={handleEdit}>
-				<TextInput label="Beer Name" useFormInput={name} value={name} />
-				<br />
-				<TextInput label="Brewery" useFormInput={brewery} value={brewery} />
-				<TextInput label="Style" useFormInput={style} value={style} />
-				<TextInput label="Description" useFormInput={description} value={description} textarea />
-				Appearance:
-				<Rating icon="heart" onRate={handleApp} rating={app} maxRating={5} size="tiny" />
-				Aroma:
-				<Rating icon="heart" onRate={handleAroma} rating={aroma} maxRating={5} size="tiny" />
-				Flavor:
-				<Rating icon="heart" onRate={handleFlavor} rating={flavor} maxRating={5} size="tiny" />
-				Mouthfeel:
-				<Rating icon="heart" onRate={handleMf} rating={mouthfeel} maxRating={5} size="tiny" />
-				Overall:
-				<Rating icon="heart" defaultRating={props.review.overall} maxRating={5} size="massive" disabled />
-				<Button style={{ marginTop: '10px' }}>Finish</Button>
+			<h1 className="reviewHeader">Edit Review</h1>
+			<Form onSubmit={handleEdit}>
+				<div className="editReviewForm">
+					<div className="editContent">
+						<TextInput label="Beer Name" useFormInput={name} value={name} />
+						<br />
+						<TextInput label="Brewery" useFormInput={brewery} value={brewery} />
+						<TextInput label="Style" useFormInput={style} value={style} />
+						<TextInput label="Description" useFormInput={description} value={description} textarea />
+						<h4>Appearance:</h4>
+						<Rating icon="heart" onRate={handleApp} rating={app} maxRating={5} size="tiny" />
+						<h4>Aroma:</h4>
+						<Rating icon="heart" onRate={handleAroma} rating={aroma} maxRating={5} size="tiny" />
+						<h4>Flavor:</h4>
+						<Rating icon="heart" onRate={handleFlavor} rating={flavor} maxRating={5} size="tiny" />
+						<h4>Mouthfeel:</h4>
+						<Rating icon="heart" onRate={handleMf} rating={mouthfeel} maxRating={5} size="tiny" />
+						<h3> Overall:</h3>
+						<Rating
+							icon="heart"
+							defaultRating={props.review.overall}
+							maxRating={5}
+							size="massive"
+							disabled
+						/>
+						<br />
+						<Button color="green" style={{ marginTop: '10px' }}>
+							Finish
+						</Button>
+					</div>
+				</div>
 			</Form>
 		</div>
 	);

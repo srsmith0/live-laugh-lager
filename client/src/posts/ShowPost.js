@@ -9,6 +9,7 @@ import EditPost from './EditPost';
 function ShowPost(props) {
 	const [ editing, setEditing ] = useState(false);
 	const [ post, setPost ] = useState(null);
+	const [ showComments, setShowComments ] = useState(false);
 	const { id } = useParams();
 	const { userId } = props.location.state;
 
@@ -27,25 +28,42 @@ function ShowPost(props) {
 	if (post) {
 		return (
 			<div>
-				{editing ? (
-					<EditPost editing={editing} post={post} setPost={setPost} setEditing={setEditing} />
-				) : (
-					<div>
-						<h1>{post.title}</h1>
-						<p>By: {post.user_name}</p>
-						<p>{post.content}</p>
-					</div>
-				)}
-				{props.auth.user.id === post.user_id ? (
-					<div>
-						<Button onClick={() => deletePost()}>Delete</Button>
-						<Button onClick={() => setEditing(!editing)}>Edit</Button>
-					</div>
-				) : null}
-				<div>
-					<CommentList postId={id} userId={userId} />
+				<h1 className="reviewHeader">{post.title}</h1>
+				<h4 className="bannerProfile" style={{ textAlign: 'center' }}>
+					By: {post.user_name}
+				</h4>
+				<div className="postShow">
+					{editing ? (
+						<EditPost editing={editing} post={post} setPost={setPost} setEditing={setEditing} />
+					) : (
+						<div className="postContent">
+							<p>{post.content}</p>
+						</div>
+					)}
 				</div>
-				<Button onClick={props.history.goBack}>Go Back</Button>
+				<div className="comments">
+					<Button onClick={() => setShowComments(!showComments)} color="black">
+						{showComments ? 'Hide Comments' : 'Show Comments'}
+					</Button>
+					<br />
+					<br />
+					{showComments ? <CommentList postId={id} userId={userId} /> : null}
+				</div>
+				<div className="postButtons">
+					{props.auth.user.id === post.user_id ? (
+						<div>
+							<Button color="orange" onClick={() => setEditing(!editing)}>
+								Edit
+							</Button>
+							<Button color="red" onClick={() => deletePost()}>
+								Delete
+							</Button>
+						</div>
+					) : null}
+					<Button color="blue" onClick={props.history.goBack}>
+						Go Back
+					</Button>
+				</div>
 			</div>
 		);
 	} else {

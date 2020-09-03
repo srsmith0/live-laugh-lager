@@ -10,8 +10,9 @@ export default function Follower({ follower }) {
 					state: { user: follower }
 				}}
 			>
-				{follower.nickname}
+				<h2 className="follower">{follower.nickname}</h2>
 			</Link>
+			<hr className="hr2" />
 		</div>
 	);
 }

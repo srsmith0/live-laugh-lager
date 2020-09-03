@@ -1,16 +1,17 @@
 import React from 'react';
 import './Profile.css';
-import { Header, Menu, Dropdown, Grid, Segment, Button } from 'semantic-ui-react';
+import { Menu, Grid, Segment, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { AuthConsumer } from '../providers/AuthProvider';
 import PostList from '../posts/PostList';
 import Settings from './Settings';
-import FindBrewery from '../FindBrewery/FindBrewery';
 import ShowFollowers from './ShowFollowers';
 import ShowFollowees from './ShowFollowees';
 import ReviewForm from '../posts/ReviewForm';
 import PostForm from '../posts/PostForm';
 import Footer from '../components/Footer';
+import FindBrewery from '../FindBrewery/FindBrewery';
+import FollowForm from './FollowForm';
 
 class Profile extends React.Component {
 	state = { activeItem: 'feed' };
@@ -57,6 +58,9 @@ class Profile extends React.Component {
 			case 'users i follow':
 				return this.renderFollowees();
 
+			case 'find drinking buddies':
+				return <FollowForm />;
+
 			case 'add review':
 				return <ReviewForm props={this.props} handleItemClick={this.handleItemClick} />;
 
@@ -99,6 +103,12 @@ class Profile extends React.Component {
 								icon="users"
 								name="users i follow"
 								active={activeItem === 'users i follow'}
+								onClick={this.handleItemClick}
+							/>
+							<Menu.Item
+								icon="user plus"
+								name="find drinking buddies"
+								active={activeItem === 'find drinking buddies'}
 								onClick={this.handleItemClick}
 							/>
 							<Menu.Item icon="write" name="add review" as={Link} to="/review" />
