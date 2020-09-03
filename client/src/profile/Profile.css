@@ -31,7 +31,7 @@
 
 .reviewHeader {
 	text-align: center;
-	font-family: 'Dancing Script', sans-serif;
+	font-family: 'Dancing Script', cursive;
 	font-size: 3rem;
 	padding: 2rem 0 2rem 0;
 }
@@ -93,7 +93,7 @@
 
 .postHeader {
 	text-align: center;
-	font-family: 'Dancing Script', sans-serif;
+	font-family: 'Dancing Script', cursive;
 	font-size: 3rem;
 	padding: 2rem 0 2rem 0;
 }
@@ -185,7 +185,7 @@
 }
 
 .discoverHeader {
-	font-family: 'Dancing Script', sans-serif;
+	font-family: 'Dancing Script', cursive;
 	font-size: 2.25rem;
 }
 
@@ -203,7 +203,7 @@
 
 .smallHeader {
 	text-align: center;
-	font-family: 'Dancing Script', sans-serif;
+	font-family: 'Dancing Script', cursive;
 	font-size: 2rem;
 }
 
@@ -247,4 +247,46 @@
 
 .settingsButton {
 	padding-bottom: 2rem;
+}
+
+.settingsContent {
+	display: flex;
+	justify-content: center;
+}
+.contactHeader {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding-bottom: 1rem;
+	padding-top: 3rem;
+}
+
+.contactFont {
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 3rem;
+}
+
+.subHeader {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 4rem;
+	font-style: italic;
+	color: gray;
+}
+
+.self {
+	width: 20rem;
+	height: 20rem;
+	border-radius: 25%;
+	padding: .1rem;
+	border: .1rem solid lightgrey;
+	transform: rotate(90deg);
+}
+
+.info {
+	text-align: center;
+}
+
+.occupation {
+	color: gray;
 }
