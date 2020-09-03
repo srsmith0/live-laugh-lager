@@ -210,3 +210,41 @@
 .followForm {
 	text-align: center;
 }
+
+.showUser {
+	text-align: center;
+}
+
+.showUserHeader {
+	text-align: center;
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 3rem;
+	padding-top: 2rem;
+}
+
+.userTop {
+	padding-bottom: 3rem;
+}
+
+.userName {
+	font-family: 'Montserrat', sans-serif;
+}
+.followButtons {
+	padding-bottom: 3rem;
+	display: flex;
+	justify-content: center;
+}
+
+.settings {
+	text-align: center;
+}
+
+.settingsHeader {
+	text-align: center;
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 3rem;
+}
+
+.settingsButton {
+	padding-bottom: 2rem;
+}
