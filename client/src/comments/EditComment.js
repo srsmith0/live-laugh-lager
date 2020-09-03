@@ -17,9 +17,11 @@ export default function EditComment(props) {
 	}
 
 	return (
-		<Form header="Edit Comment" onSubmit={handleEdit}>
-			<TextInput label="Comment" useFormInput={content} value={content} textarea />
-			<Button style={{ marginTop: '10px' }}>Finish</Button>
+		<Form onSubmit={handleEdit}>
+			<TextInput label="Edit Comment" useFormInput={content} value={content} textarea />
+			<Button color="green" style={{ marginTop: '10px' }}>
+				Finish
+			</Button>
 		</Form>
 	);
 }

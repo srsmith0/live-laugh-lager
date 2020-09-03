@@ -28,13 +28,13 @@ function PostForm(props) {
 			<Form onSubmit={handleSubmit}>
 				<div className="postForm">
 					<div className="postInputs">
-						<TextInput label="Title" useFormInput={title} />
+						<TextInput label="Title" required={true} useFormInput={title} />
 						<br />
-						<TextInput label="Content" useFormInput={content} textarea required />
+						<TextInput label="Content" useFormInput={content} required={true} textarea required />
 					</div>
 				</div>
 				<div className="postButtons">
-					<Button color="blue">Submit</Button>
+					<Button color="green">Submit</Button>
 				</div>
 			</Form>
 			<div className="postButtons">

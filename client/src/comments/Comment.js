@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EditComment from './EditComment';
 import { AuthConsumer } from '../providers/AuthProvider';
+import { Button, Icon } from 'semantic-ui-react';
 
 function Comment(props) {
 	const [ editing, setEditing ] = useState(false);
@@ -8,24 +9,20 @@ function Comment(props) {
 	return (
 		<div key={props.comment.id}>
 			<p>{props.comment.content}</p>
-			{editing ? (
-				<EditComment
-					{...props}
-					// editComment={props.editComment}
-					// comment={props.comment}
-					// postId={props.postId}
-					setEditing={setEditing}
-					editing={editing}
-				/>
-			) : null}
+			{editing ? <EditComment {...props} setEditing={setEditing} editing={editing} /> : null}
 
 			{props.auth.user.id === props.comment.user_id ? (
 				<div>
-					<button onClick={() => setEditing(!editing)}>Edit</button>
-					<button onClick={() => props.deleteComment(props.comment)}>Delete</button>
+					<Button icon="edit" size="mini" color="orange" onClick={() => setEditing(!editing)} />
+					<Button
+						icon="trash alternate"
+						size="mini"
+						color="red"
+						onClick={() => props.deleteComment(props.comment)}
+					/>
 				</div>
 			) : null}
-			<hr />
+			<hr className="hr1" />
 		</div>
 	);
 }

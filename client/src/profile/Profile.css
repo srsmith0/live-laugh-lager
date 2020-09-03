@@ -9,6 +9,10 @@
 	font-family: 'Montserrat', sans-serif;
 }
 
+.textInput {
+	font-family: 'Montserrat', sans-serif;
+}
+
 .background {
 	background-image: linear-gradient(#a0d2eb, #e5eaf5, #d0bdf4, #8458b3, #a28089);
 	background-repeat: repeat;
@@ -39,11 +43,22 @@
 	margin: 0 6rem 0 6em;
 	border: grey 0.1rem solid;
 }
+
+.editReviewForm {
+	align-content: center;
+}
+
+.editContent {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+
 .reviewScores {
 	display: flex;
 	justify-content: flex-start;
 	align-content: flex-end;
 }
+
 .reviewScoresAA {
 	display: flex;
 	justify-content: flex-start;
@@ -124,7 +139,74 @@
 	padding-top: 2rem;
 }
 
+.hr1 {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.hr2 {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.25), rgba(255, 0, 0, 0));
+}
+
 .reviewDescription {
 	align-self: center;
 	padding: 2rem 0 2rem 0;
+}
+
+.postShow {
+	margin-top: 10rem;
+	display: flex;
+	justify-content: center;
+	background-color: whitesmoke;
+	margin: 0 6rem 0 6em;
+	border: grey 0.1rem solid;
+	padding-bottom: 2rem;
+}
+
+.postContent {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.25rem;
+}
+
+.comments {
+	text-align: center;
+	padding-top: 2rem;
+}
+
+.follower {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.discover {
+	text-align: center;
+}
+
+.discoverHeader {
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 2.25rem;
+}
+
+.breweryCards {
+	padding-top: 2rem;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.brewCard {
+	width: 100% !important;
+	text-align: center;
+}
+
+.smallHeader {
+	text-align: center;
+	font-family: 'Dancing Script', sans-serif;
+	font-size: 2rem;
+}
+
+.followForm {
+	text-align: center;
 }

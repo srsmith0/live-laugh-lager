@@ -65,22 +65,45 @@ function CommentList(props) {
 
 	let sortedComments = comments.sort(compare);
 
-	return (
-		<div>
-			<Button onClick={() => setCommentForm(!commentForm)}>Add Comment</Button>
-			{commentForm ? (
-				<CommentForm
-					user_id={props.userId}
-					post_id={props.postId}
-					comments={comments}
-					commentForm={commentForm}
-					setCommentForm={setCommentForm}
-					addComment={addComment}
-				/>
-			) : null}
-			{renderComments()}
-		</div>
-	);
+	if (sortedComments.length === 0) {
+		return (
+			<div>
+				<h2>No Comments</h2>
+				<Button size="tiny" color="olive" onClick={() => setCommentForm(!commentForm)}>
+					Add Comment
+				</Button>
+				{commentForm ? (
+					<CommentForm
+						user_id={props.userId}
+						post_id={props.postId}
+						comments={comments}
+						commentForm={commentForm}
+						setCommentForm={setCommentForm}
+						addComment={addComment}
+					/>
+				) : null}
+			</div>
+		);
+	} else {
+		return (
+			<div>
+				<Button size="tiny" color="olive" onClick={() => setCommentForm(!commentForm)}>
+					Add Comment
+				</Button>
+				{commentForm ? (
+					<CommentForm
+						user_id={props.userId}
+						post_id={props.postId}
+						comments={comments}
+						commentForm={commentForm}
+						setCommentForm={setCommentForm}
+						addComment={addComment}
+					/>
+				) : null}
+				{renderComments()}
+			</div>
+		);
+	}
 }
 
 function ConnectedCommentList(props) {

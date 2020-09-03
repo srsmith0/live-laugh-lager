@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AuthConsumer } from '../providers/AuthProvider';
 import Axios from 'axios';
 import FollowForm from './FollowForm';
+import { Button } from 'semantic-ui-react';
 
 function Settings(props) {
 	const [ firstName, setFirstName ] = useState(props.auth.user.name);
@@ -102,11 +103,10 @@ function Settings(props) {
 					</div>
 				) : null}
 			</form>
-			<button style={{ color: 'red' }} onClick={() => removeUser()}>
+			<Button color="red" onClick={() => removeUser()}>
 				Delete Account
-			</button>
+			</Button>
 			<br />
-			<FollowForm user={props.auth.user} />
 		</div>
 	);
 }

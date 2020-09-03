@@ -11,10 +11,10 @@
     render json: my_follows 
   end
   
-    def show
-      follow = Follow.find_by(user_id: params[:user_id], follower_id: params[:follower_id])
-      render json: follow
-    end
+  def show
+    follow = Follow.find_by(user_id: params[:user_id], follower_id: params[:follower_id])
+    render json: follow
+  end
   
   def show_followers
     find_followers = current_user.follows.all
@@ -23,10 +23,10 @@
   end
   
   def show_followees
-        find_followees = Follow.all
-        my_followees = Follow.sort_followees(find_followees, current_user.id)
-        render json: my_followees
-      end
+    find_followees = Follow.all
+    my_followees = Follow.sort_followees(find_followees, current_user.id)
+    render json: my_followees
+  end
   
   
   def create

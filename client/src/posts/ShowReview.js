@@ -96,11 +96,17 @@ function ShowReview(props) {
 				<div className="reviewButtons">
 					{props.auth.user.id === review.user_id ? (
 						<div>
-							<Button onClick={() => setEditing(!editing)}>Edit</Button>
-							<Button onClick={() => deleteReview()}>Delete</Button>
+							<Button color="orange" onClick={() => setEditing(!editing)}>
+								{editing ? 'Close' : 'Edit'}
+							</Button>
+							<Button color="red" onClick={() => deleteReview()}>
+								Delete
+							</Button>
 						</div>
 					) : null}
-					<Button onClick={props.history.goBack}>Go Back</Button>
+					<Button color="blue" onClick={props.history.goBack}>
+						Go Back
+					</Button>
 				</div>
 			</div>
 		);

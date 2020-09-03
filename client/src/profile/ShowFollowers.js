@@ -19,5 +19,10 @@ export default function ShowFollowers({ userId }) {
 		));
 	}
 
-	return <div>{renderFollowers()}</div>;
+	return (
+		<div>
+			<h2 className="smallHeader">My Followers</h2>
+			{renderFollowers()}
+		</div>
+	);
 }
