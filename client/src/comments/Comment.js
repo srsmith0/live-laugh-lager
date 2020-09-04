@@ -8,6 +8,7 @@ function Comment(props) {
 
 	return (
 		<div key={props.comment.id}>
+			<p>{props.comment.user_name} says:</p>
 			<p>{props.comment.content}</p>
 			{editing ? <EditComment {...props} setEditing={setEditing} editing={editing} /> : null}
 

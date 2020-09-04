@@ -10,13 +10,12 @@ function Home(props) {
 	const [ openLogin, setOpenLogin ] = useState(false);
 
 	return (
-		<>
 		<div className="background">
 			<h1 className="title">Live, Laugh, Lager</h1>
 			<div className="content">
 				<div className="text">
 					<h3 className="banner">
-						Gather with friends to share beer reviews, posts, and find your favorite breweries.
+						Gather with friends to share beer reviews, posts, and find your favorite breweries
 					</h3>
 					{props.auth.user ? null : (
 						<div className="button">
@@ -38,7 +37,11 @@ function Home(props) {
 							<Modal
 								closeIcon
 								open={openLogin}
-								trigger={<Button size="huge" color="yellow">Login</Button>}
+								trigger={
+									<Button size="huge" color="yellow">
+										Login
+									</Button>
+								}
 								onClose={() => setOpenLogin(false)}
 								onOpen={() => setOpenLogin(true)}
 							>
@@ -51,7 +54,6 @@ function Home(props) {
 				</div>
 			</div>
 		</div>
-			</>
 	);
 }
 

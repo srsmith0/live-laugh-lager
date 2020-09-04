@@ -36,6 +36,17 @@
 	padding: 2rem 0 2rem 0;
 }
 
+.showReviewHeader {
+	text-align: center;
+	font-family: 'Dancing Script', cursive;
+	font-size: 3rem;
+	padding-top: 2rem;
+}
+.reviewSubHeader {
+	font-family: 'Montserrat', sans-serif;
+	padding-bottom: 2rem;
+}
+
 .reviewForm {
 	display: flex;
 	justify-content: center;

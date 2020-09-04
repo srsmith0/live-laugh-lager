@@ -94,6 +94,7 @@ function CommentList(props) {
 					<CommentForm
 						user_id={props.userId}
 						post_id={props.postId}
+						user_name={props.userName}
 						comments={comments}
 						commentForm={commentForm}
 						setCommentForm={setCommentForm}

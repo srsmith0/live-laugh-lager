@@ -40,8 +40,8 @@ function ShowReview(props) {
 					/>
 				) : (
 					<div>
-						<h1 className="reviewHeader">{review.name}</h1>
-						<h4 className="bannerProfile" style={{ textAlign: 'center' }}>
+						<h1 className="showReviewHeader">{review.name}</h1>
+						<h4 className="reviewSubHeader" style={{ textAlign: 'center' }}>
 							By: {review.user_name}
 						</h4>
 						<div className="reviewShow">

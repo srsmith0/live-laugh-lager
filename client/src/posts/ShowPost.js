@@ -47,7 +47,9 @@ function ShowPost(props) {
 					</Button>
 					<br />
 					<br />
-					{showComments ? <CommentList postId={id} userId={userId} /> : null}
+					{showComments ? (
+						<CommentList postId={id} userId={userId} userName={props.auth.user.nickname} />
+					) : null}
 				</div>
 				<div className="postButtons">
 					{props.auth.user.id === post.user_id ? (

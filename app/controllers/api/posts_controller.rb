@@ -16,7 +16,6 @@ class Api::PostsController < ApplicationController
         followed << f
       end
     end
-
     followed_posts =[]
     followed.each do |f|
       Post.all.each do |p|
