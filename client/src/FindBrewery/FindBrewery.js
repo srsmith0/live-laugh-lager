@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Form } from '../components/Form';
 import TextInput from '../components/TextInput';
 import { Button } from 'semantic-ui-react';
-import { breweryKey } from '../keys';
 import { useFormInput } from '../customHooks/useFormInput';
 import Axios from 'axios';
 import BreweryCard from './BreweryCard';
@@ -38,7 +37,7 @@ export default function FindBrewery() {
 		Axios.get(`https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_state=${brewerySearch}`, {
 			headers: {
 				'x-rapidapi-host': 'brianiswu-open-brewery-db-v1.p.rapidapi.com',
-				'x-rapidapi-key': breweryKey
+				'x-rapidapi-key': process.env.BEER_REVIEW_BREWERY_KEY
 			}
 		})
 			.then((res) => {
