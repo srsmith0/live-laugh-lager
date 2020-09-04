@@ -13,4 +13,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  def self.all_users(id)
+    all_users = User.all
+    users=[]
+    all_users.each do |u|
+      if u.id != id
+        users << u 
+      end
+    end
+    return users
+  end
+
 end

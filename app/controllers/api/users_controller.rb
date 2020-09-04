@@ -1,6 +1,11 @@
 class Api::UsersController < ApplicationController
    before_action :authenticate_user! , only: [:update]
 
+  def index
+    render json: User.all_users(current_user.id)
+  end
+
+
   def select_user
     user = User.find(params[:user_id])
     render json: user 

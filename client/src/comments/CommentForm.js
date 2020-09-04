@@ -8,7 +8,7 @@ import { Form } from '../components/Form';
 export default function CommentForm(props) {
 	const content = useFormInput('', 'comment');
 
-	const newComment = { content: content.value, post_id: props.post_id };
+	const newComment = { content: content.value, post_id: props.post_id, user_name: props.user_name };
 
 	function addComment(e) {
 		Axios.post(`/api/users/${props.user_id}/posts/${props.post_id}/comments`, newComment).then((res) => {

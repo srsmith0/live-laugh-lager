@@ -4,6 +4,7 @@
 	font-size: 7rem;
 	text-align: center;
 	color: whitesmoke;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .banner {
@@ -11,6 +12,7 @@
 	font-size: 2rem;
 	color: white;
 	text-align: center;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .background {

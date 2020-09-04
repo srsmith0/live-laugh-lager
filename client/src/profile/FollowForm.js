@@ -12,44 +12,56 @@ function FollowForm(props) {
 	const [ userList, setUserList ] = useState([]);
 	const username = useFormInput('', 'username');
 
+	useEffect(() => {
+		Axios.get(`/api/users`).then((res) => {
+			setUserList(res.data);
+		});
+	}, []);
 	// useEffect(() => {
 	// 	Axios.get(`/api/not_followed/${props.auth.user.id}`).then((res) => {
 	// 		setUserList(res.data);
 	// 	});
 	// }, []);
 
+	// function renderNotFollowedUsers() {
+	// 	return userList.map((u) => {
+	// 		if (u.id !== props.auth.user.id) {
+	// 			return (
+	// 				<div key={u.id}>
+	// 					<Follower follower={u} />
+	// 				</div>
+	// 			);
+	// 		}
+	// 	});
+	// }
+
+	function renderUsers() {
+		return userList.map((u) => <Follower follower={u} />);
+	}
+
 	function followUser(userName) {
 		Axios.get(`/api/user/${userName}`)
 			.then((res) => {
 				if (res.data.id === props.auth.user.id) {
-					return alert('Cannot follow yourself');
+					setSuccess('Cannot follow yourself');
+					setTimeout(emptySuccess, 3000);
 				} else {
 					Axios.post(`/api/user/${res.data.id}/follow/${props.auth.user.id}`, {
 						user_id: res.data.id,
 						follower_id: props.auth.user.id
 					}).then((res) => {
 						{
-							res.data.message ? alert(`${res.data.message}`) : setSuccess(`Now following ${userName}`);
+							res.data.message
+								? setSuccess(`${res.data.message}`)
+								: setSuccess(`Now following ${userName}`);
 						}
 					});
 				}
 			})
 			.catch((err) => {
-				alert('User does not exist');
-				setSuccess('');
+				setSuccess('User does not exist');
+				setTimeout(emptySuccess, 3000);
 			});
-	}
-
-	function renderNotFollowedUsers() {
-		return userList.map((u) => {
-			if (u.id !== props.auth.user.id) {
-				return (
-					<div key={u.id}>
-						<Follower follower={u} />
-					</div>
-				);
-			}
-		});
 	}
 
 	async function handleSubmit() {
@@ -72,9 +84,10 @@ function FollowForm(props) {
 						Follow
 					</Button>
 				</Form>
+				<p>{success}</p>
+				{renderUsers()}
+				{/* {renderNotFollowedUsers()} */}
 			</div>
-			<p>{success}</p>
-			{/* {renderNotFollowedUsers()} */}
 		</div>
 	);
 }

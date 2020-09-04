@@ -12,7 +12,7 @@ export default function FindBrewery() {
 	const [ data, setData ] = useState(null);
 	const [ loading, setLoading ] = useState(false);
 
-	const breweryState = useFormInput('', 'state');
+	const breweryState = useFormInput('', 'full name of state');
 
 	function renderBreweries(breweries) {
 		if (loading) {
