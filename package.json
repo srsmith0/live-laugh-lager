@@ -7,11 +7,7 @@
 		"test": "test"
 	},
 	"dependencies": {},
-	"devDependencies": {
-		"dotenv": "^8.2.0",
-		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12"
-	},
+	"devDependencies": {},
 	"scripts": {
 		"build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
 		"deploy": "cp -a client/build/. public/",
