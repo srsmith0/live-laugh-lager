@@ -34,12 +34,7 @@ export default function FindBrewery() {
 		setLoading(true);
 		const brewerySearch =
 			breweryState.value.toLowerCase().charAt(0).toUpperCase() + breweryState.value.toLowerCase().slice(1);
-		Axios.get(`https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries?by_state=${brewerySearch}`, {
-			headers: {
-				'x-rapidapi-host': 'brianiswu-open-brewery-db-v1.p.rapidapi.com',
-				'x-rapidapi-key': process.env.BEER_REVIEW_BREWERY_KEY
-			}
-		})
+		Axios.get(`/api/get_breweries/${brewerySearch}`)
 			.then((res) => {
 				{
 					res.data <= 0 ? alert('No results found') : setData(res.data);

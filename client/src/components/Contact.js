@@ -10,7 +10,7 @@ export default function Contact() {
 			<div className="contactHeader">
 				<h1 className="contactFont">This app was created by Shawn Smith</h1>
 			</div>
-			<p className="subHeader">Please feel free to reach out if you have an comments or questions</p>
+			<p className="subHeader">Please feel free to reach out if you have any comments or questions</p>
 
 			<div className="settingsContent">
 				<div>

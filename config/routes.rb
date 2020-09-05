@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/set_user/:user_id', to: 'users#select_user'
     get '/follows/follower/:follower_id/user/:user_id', to: 'follows#show'
     get '/not_followed/:id', to: 'users#find_followees'
+    get '/get_breweries/:brewery_state' , to: 'users#get_breweries'
     resources :follows, only: [:index, :create, :destroy]
     resources :users do
       resources :reviews
