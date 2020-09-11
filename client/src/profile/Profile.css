@@ -116,6 +116,7 @@
 	margin: 0 6rem 0 6em;
 	border: grey 0.1rem solid;
 	padding-bottom: 2rem;
+	text-align: center;
 }
 
 .postInputs {
@@ -172,11 +173,16 @@
 	display: flex;
 	justify-content: center;
 	background-color: whitesmoke;
-	margin: 0 6rem 0 6em;
+	width: 70%;
+	margin: 0 15%;
 	border: grey 0.1rem solid;
 	padding-bottom: 2rem;
 }
 
+.editPostForm {
+	width: 100%;
+	text-align: center;
+}
 .postContent {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1.25rem;
@@ -286,7 +292,7 @@
 }
 
 .self {
-	width: 20rem;
+	width: 25rem;
 	height: 20rem;
 	border-radius: 25%;
 	padding: .1rem;
@@ -296,8 +302,53 @@
 
 .info {
 	text-align: center;
+	padding-top: 4rem;
 }
 
-.occupation {
-	color: gray;
+.textArea {
+	outline: none;
+	width: 480px;
+	height: 300px;
+}
+
+@media only screen and (max-width: 670px) {
+	.postForm {
+		width: 80%;
+		background-color: whitesmoke;
+		margin: 0 10%;
+		border: grey 0.1rem solid;
+		padding-bottom: 2rem;
+	}
+
+	.postInputs {
+		width: 50%;
+		margin: 0 25%;
+	}
+
+	.textArea {
+		width: 100%;
+	}
+
+	.contactHeader {
+		padding-top: 2rem;
+	}
+
+	.contactFont {
+		text-align: center;
+	}
+
+	.subHeader {
+		padding-bottom: 2rem;
+	}
+
+	.self {
+		width: 25rem;
+		padding: .1rem;
+		border: .1rem solid lightgrey;
+		transform: rotate(90deg);
+	}
+
+	.info {
+		padding-top: 3rem;
+	}
 }

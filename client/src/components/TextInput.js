@@ -6,11 +6,7 @@ const TextInput = (props) => {
 			<div className="textInput">
 				<h3>{props.label}</h3>
 				{props.textarea ? (
-					<textarea
-						required
-						style={{ outline: 'none', width: '500px', height: '300px' }}
-						{...props.useFormInput}
-					/>
+					<textarea className="textArea" required {...props.useFormInput} />
 				) : (
 					<input required style={{ outline: 'none' }} {...props.useFormInput} />
 				)}
@@ -21,7 +17,7 @@ const TextInput = (props) => {
 			<div className="textInput">
 				<h3>{props.label}</h3>
 				{props.textarea ? (
-					<textarea style={{ outline: 'none', width: '500px', height: '300px' }} {...props.useFormInput} />
+					<textarea className="textArea" {...props.useFormInput} />
 				) : (
 					<input style={{ outline: 'none' }} {...props.useFormInput} />
 				)}

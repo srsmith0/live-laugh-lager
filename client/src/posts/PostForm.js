@@ -30,7 +30,9 @@ function PostForm(props) {
 					<div className="postInputs">
 						<TextInput label="Title" required={true} useFormInput={title} />
 						<br />
-						<TextInput label="Content" useFormInput={content} required={true} textarea required />
+						<div className="formAddContent">
+							<TextInput label="Content" useFormInput={content} required={true} textarea required />
+						</div>
 					</div>
 				</div>
 				<div className="postButtons">

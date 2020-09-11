@@ -22,7 +22,7 @@ export default function EditPost(props) {
 
 	return (
 		<Form onSubmit={handleEdit}>
-			<div style={{ textAlign: 'center' }}>
+			<div className="editPostForm">
 				<TextInput label="Title" useFormInput={title} value={title} />
 				<br />
 				<TextInput label="Content" useFormInput={content} value={content} textarea />
