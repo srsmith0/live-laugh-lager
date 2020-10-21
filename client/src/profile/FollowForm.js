@@ -17,23 +17,6 @@ function FollowForm(props) {
 			setUserList(res.data);
 		});
 	}, []);
-	// useEffect(() => {
-	// 	Axios.get(`/api/not_followed/${props.auth.user.id}`).then((res) => {
-	// 		setUserList(res.data);
-	// 	});
-	// }, []);
-
-	// function renderNotFollowedUsers() {
-	// 	return userList.map((u) => {
-	// 		if (u.id !== props.auth.user.id) {
-	// 			return (
-	// 				<div key={u.id}>
-	// 					<Follower follower={u} />
-	// 				</div>
-	// 			);
-	// 		}
-	// 	});
-	// }
 
 	function renderUsers() {
 		return userList.map((u) => <Follower follower={u} />);
@@ -86,7 +69,6 @@ function FollowForm(props) {
 				</Form>
 				<p>{success}</p>
 				{renderUsers()}
-				{/* {renderNotFollowedUsers()} */}
 			</div>
 		</div>
 	);

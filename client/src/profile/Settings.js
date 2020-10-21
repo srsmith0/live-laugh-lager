@@ -9,18 +9,12 @@ function Settings(props) {
 	const [ username, setUsername ] = useState(props.auth.user.nickname);
 	const [ editing, setEditing ] = useState(false);
 	const [ disabled, setDisabled ] = useState(true);
-	// const [ password, setPassword ] = useState(false);
-	// const [ currentPassword, setCurrentPassword ] = useState('');
-	// const [ newPassword, setNewPassword ] = useState('');
-	// const [ copyPassword, setCopyPassword ] = useState('');
 
 	const user = {
 		name: firstName,
 		nickname: username,
 		email: email,
 		id: props.auth.user.id
-		// newPassword: newPassword,
-		// copyPassword: copyPassword
 	};
 
 	function handleSubmit(e) {
@@ -34,18 +28,6 @@ function Settings(props) {
 		props.auth.handleLogout(props.history);
 		Axios.delete(`/api/users/${user.id}`);
 	}
-
-	// function changePassword(e) {
-	// 	debugger;
-	// 	if (currentPassword === props.auth.user.password && newPassword === copyPassword) {
-	// 		Axios.put(`/api/auth/password`, { password: newPassword });
-	// 		setEditing(!editing);
-	// 	} else if (newPassword !== copyPassword) {
-	// 		alert('Passwords do not match');
-	// 	} else {
-	// 		alert('Invalid password');
-	// 	}
-	// }
 
 	return (
 		<div className="settings">
@@ -90,45 +72,6 @@ function Settings(props) {
 				) : null}
 			</form>
 			<br />
-			{/* {editing ? <button onClick={() => setPassword(!password)}>Change Password</button> : null}
-			<form onSubmit={changePassword}>
-				{password && editing ? (
-					<div>
-						<Form onSubmit={changePassword}>
-							<p>
-								Current Password:
-								<input
-									label="Current Password"
-									type="password"
-									value={currentPassword}
-									onChange={editing ? (e) => setCurrentPassword(e.target.value) : null}
-								/>
-							</p>
-							<p>
-								New Password:
-								<input
-									label="New Password"
-									type="password"
-									value={newPassword}
-									onChange={editing ? (e) => setNewPassword(e.target.value) : null}
-								/>
-							</p>
-							<p>
-								Retype Password:
-								<input
-									label="Retype Password"
-									type="password"
-									value={copyPassword}
-									onChange={editing ? (e) => setCopyPassword(e.target.value) : null}
-								/>
-							</p>
-							<Button color="green" size="tiny">
-								Submit
-							</Button>
-						</Form>
-					</div>
-				) : null}
-			</form> */}
 			<Button color="red" onClick={() => removeUser()}>
 				Delete Account
 			</Button>

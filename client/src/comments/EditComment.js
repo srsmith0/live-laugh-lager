@@ -7,7 +7,6 @@ import { useFormInput } from '../customHooks/useFormInput';
 export default function EditComment(props) {
 	const content = useFormInput(props.comment.content, 'comment');
 
-	//not getting an id passed
 	function handleEdit(e) {
 		let comment = props.comment;
 		comment.content = content.value;

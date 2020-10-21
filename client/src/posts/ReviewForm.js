@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Rating, Header, Segment, Button } from 'semantic-ui-react';
+import { Form, Rating, Header, Button } from 'semantic-ui-react';
 import Axios from 'axios';
 import { AuthConsumer } from '../providers/AuthProvider';
 

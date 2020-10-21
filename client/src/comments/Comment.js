@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import EditComment from './EditComment';
 import { AuthConsumer } from '../providers/AuthProvider';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 function Comment(props) {
 	const [ editing, setEditing ] = useState(false);
