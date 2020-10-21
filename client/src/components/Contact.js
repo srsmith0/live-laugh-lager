@@ -3,7 +3,6 @@ import self from '../images/self.png';
 import { Icon } from 'semantic-ui-react';
 
 export default function Contact() {
-	const email = 'srsmith' + '11' + '@' + 'live.com';
 
 	return (
 		<div>

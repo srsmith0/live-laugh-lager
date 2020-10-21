@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Live Laugh Lager",
+  "name": "A beer review application",
   "icons": [
     {
       "src": "favicon.ico",
