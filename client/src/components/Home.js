@@ -5,12 +5,13 @@ import { AuthConsumer } from '../providers/AuthProvider';
 import Register from './Register';
 import Login from './Login';
 
+
 function Home(props) {
 	const [openRegister, setOpenRegister] = useState(false);
 	const [openLogin, setOpenLogin] = useState(false);
 
 	const handleDemo = () => {
-		props.auth.handleLogin({ email: "1-test@test.com", password: "123456" }, props.history);
+		props.auth.handleLogin({ email: process.env.REACT_APP_EMAIL, password: process.env.REACT_APP_PASSWORD }, props.history);
 	}
 
 	return (
