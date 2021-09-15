@@ -37,7 +37,6 @@ function App() {
 					<Route exact path="/post/:id" component={ShowPost} />
 					<Route exact path="/review/:id" component={ShowReview} />
 					<Route exact path="/findbrewery" component={FindBrewery} />
-					<Route exact path="/contact" component={Contact} />
 					<Route component={NoMatch} />
 				</Switch>
 			</FetchUser>

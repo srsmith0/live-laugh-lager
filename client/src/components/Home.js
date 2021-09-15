@@ -6,8 +6,8 @@ import Register from './Register';
 import Login from './Login';
 
 function Home(props) {
-	const [ openRegister, setOpenRegister ] = useState(false);
-	const [ openLogin, setOpenLogin ] = useState(false);
+	const [openRegister, setOpenRegister] = useState(false);
+	const [openLogin, setOpenLogin] = useState(false);
 
 	return (
 		<div className="background">
@@ -38,7 +38,7 @@ function Home(props) {
 								closeIcon
 								open={openLogin}
 								trigger={
-									<Button size="huge" color="yellow">
+									<Button size="huge" color="olive">
 										Login
 									</Button>
 								}
@@ -49,6 +49,13 @@ function Home(props) {
 									<Login {...props} modal={openLogin} closeModal={setOpenLogin} />
 								</Modal.Content>
 							</Modal>
+							<Button
+								onClick={() => props.auth.handleLogin(process.env.REACT_APP_DEMO_EMAIL, process.env.REACT_APP_DEMO_PASSWORD)}
+								size="huge"
+								color="yellow"
+							>
+								Demo
+							</Button>
 						</div>
 					)}
 				</div>
