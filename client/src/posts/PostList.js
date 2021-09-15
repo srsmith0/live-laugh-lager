@@ -48,12 +48,12 @@ export default function PostList({ userId }) {
 			comparison = -1;
 		} else if (createA < createB) {
 			comparison = 1;
-		}
+		};
 		return comparison;
 	}
 
 	let allPosts = [ ...reviews, ...followedReviews, ...posts, ...followedPosts ];
 	let sortedPosts = allPosts.sort(compare);
 
-	return sortedPosts.map((p) => <PostListItem userId={userId} item={p} />);
+	return sortedPosts.map((p) => <PostListItem key={p.title + p.id.toString()} item={p} />);
 }

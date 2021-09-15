@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export function useFormInput(initialValue, name) {
 	const [ value, setValue ] = useState(initialValue);

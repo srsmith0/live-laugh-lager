@@ -19,9 +19,9 @@ export default function ShowFollowers({ userId }) {
 						<Follower follower={f} />
 					</div>
 				);
-			}
+			};
 		});
-	}
+	};
 
 	return (
 		<div>
@@ -29,4 +29,4 @@ export default function ShowFollowers({ userId }) {
 			{renderFollowees()}
 		</div>
 	);
-}
+};

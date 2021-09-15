@@ -54,7 +54,7 @@ function UserPage(props) {
 					getFollow();
 				});
 			})
-			.catch((err) => {
+			.catch(() => {
 				alert('User does not exist');
 			});
 		setTimeout(emptySuccess, 3000);
@@ -110,9 +110,9 @@ function UserPage(props) {
 						</Button>
 					) : null}
 					<br />
-					{success != '' ? `${success}` : null}
+					{success !== '' ? `${success}` : null}
 				</div>
-				{sortedPosts.map((p) => <PostListItem userId={user.id} item={p} />)}
+				{sortedPosts.map((p) => <PostListItem key={p.id}userId={user.id} item={p} />)}
 			</div>
 		);
 	} else {

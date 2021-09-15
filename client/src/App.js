@@ -17,7 +17,6 @@ import Settings from './profile/Settings';
 import ShowReview from './posts/ShowReview';
 import FindBrewery from './FindBrewery/FindBrewery';
 import UserPage from './profile/UserPage';
-import Contact from './components/Contact';
 
 function App() {
 	return (
