@@ -58,6 +58,7 @@ function Home(props) {
 								onClick={() => handleDemo()}
 								size="huge"
 								color="yellow"
+								type="submit"
 							>
 								Demo
 							</Button>
