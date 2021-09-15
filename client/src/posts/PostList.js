@@ -48,7 +48,7 @@ export default function PostList({ userId }) {
 			comparison = -1;
 		} else if (createA < createB) {
 			comparison = 1;
-		}
+		};
 		return comparison;
 	}
 

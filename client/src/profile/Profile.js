@@ -9,7 +9,6 @@ import ShowFollowers from './ShowFollowers';
 import ShowFollowees from './ShowFollowees';
 import ReviewForm from '../posts/ReviewForm';
 import PostForm from '../posts/PostForm';
-import Footer from '../components/Footer';
 import FindBrewery from '../FindBrewery/FindBrewery';
 import FollowForm from './FollowForm';
 

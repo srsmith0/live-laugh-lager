@@ -19,7 +19,7 @@ function CommentList(props) {
 
 	function addComment(comment) {
 		setComments([ comment, ...comments ]);
-	}
+	};
 
 	const editComment = (comment) => {
 		Axios.put(`/api/users/${props.userId}/posts/${props.postId}/comments/${comment.id}`, comment).then((res) => {
@@ -36,7 +36,7 @@ function CommentList(props) {
 			const newComments = comments.filter((c) => c.id !== comment.id);
 			setComments(newComments);
 		});
-	}
+	};
 
 	function renderComments() {
 		return sortedComments.map((c) => (
@@ -48,9 +48,9 @@ function CommentList(props) {
 				comment={c}
 			/>
 		));
-	}
+	};
 
-	function compare(a, b) {
+	function sortComments(a, b) {
 		const createA = a.created_at;
 		const createB = b.created_at;
 
@@ -59,11 +59,11 @@ function CommentList(props) {
 			comparison = -1;
 		} else if (createA < createB) {
 			comparison = 1;
-		}
+		};
 		return comparison;
-	}
+	};
 
-	let sortedComments = comments.sort(compare);
+	let sortedComments = comments.sort(sortComments);
 
 	if (sortedComments.length === 0) {
 		return (
@@ -104,11 +104,11 @@ function CommentList(props) {
 				{renderComments()}
 			</div>
 		);
-	}
-}
+	};
+};
 
 function ConnectedCommentList(props) {
 	return <AuthConsumer>{(auth) => <CommentList {...props} auth={auth} />}</AuthConsumer>;
-}
+};
 
 export default ConnectedCommentList;

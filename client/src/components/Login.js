@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomeLogin.css';
 import { AuthConsumer } from '../providers/AuthProvider';
-import { Button, Form, Segment, Header } from 'semantic-ui-react';
+import { Button, Form, Segment } from 'semantic-ui-react';
 
 class Login extends React.Component {
 	state = { email: '', password: '' };
