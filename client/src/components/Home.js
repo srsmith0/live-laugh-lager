@@ -9,8 +9,7 @@ function Home(props) {
 	const [openRegister, setOpenRegister] = useState(false);
 	const [openLogin, setOpenLogin] = useState(false);
 
-	const handleDemo = (e) => {
-		e.preventDefault();
+	const handleDemo = () => {
 		props.auth.handleLogin({ email: "1-test@test.com", password: "123456" }, props.history);
 	}
 
