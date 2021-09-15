@@ -112,7 +112,7 @@ function UserPage(props) {
 					<br />
 					{success !== '' ? `${success}` : null}
 				</div>
-				{sortedPosts.map((p) => <PostListItem userId={user.id} item={p} />)}
+				{sortedPosts.map((p) => <PostListItem key={p.id}userId={user.id} item={p} />)}
 			</div>
 		);
 	} else {

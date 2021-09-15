@@ -55,5 +55,5 @@ export default function PostList({ userId }) {
 	let allPosts = [ ...reviews, ...followedReviews, ...posts, ...followedPosts ];
 	let sortedPosts = allPosts.sort(compare);
 
-	return sortedPosts.map((p) => <PostListItem userId={userId} item={p} />);
+	return sortedPosts.map((p) => <PostListItem key={p.title + p.id.toString()} item={p} />);
 }

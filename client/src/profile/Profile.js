@@ -11,15 +11,25 @@ import ReviewForm from '../posts/ReviewForm';
 import PostForm from '../posts/PostForm';
 import FindBrewery from '../FindBrewery/FindBrewery';
 import FollowForm from './FollowForm';
+import MyPosts from '../posts/MyPosts';
+import MyReviews from '../posts/MyReviews';
 
 class Profile extends React.Component {
-	state = { activeItem: 'feed' };
+	state = { activeItem: 'feed' }
 
-	handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+	renderAllPosts = () => {
+		return <PostList userId={this.props.auth.user.id} />;
+	}
+
+	renderMyReviews = () => {
+		return <MyReviews currentUserId={this.props.auth.user.id} />;
+	}
 
 	renderMyPosts = () => {
-		return <PostList userId={this.props.auth.user.id} />;
-	};
+		return <MyPosts currentUserId={this.props.auth.user.id} />;
+	}
 
 	renderFollowers() {
 		return <ShowFollowers userId={this.props.auth.user.id} />;
@@ -49,6 +59,12 @@ class Profile extends React.Component {
 	renderOptions(activeItem) {
 		switch (activeItem) {
 			case 'feed':
+				return this.renderAllPosts();
+			
+			case 'my reviews':
+				return this.renderMyReviews();
+			
+			case 'my posts':
 				return this.renderMyPosts();
 
 			case 'followers':
@@ -90,6 +106,18 @@ class Profile extends React.Component {
 								icon="feed"
 								name="feed"
 								active={activeItem === 'feed'}
+								onClick={this.handleItemClick}
+							/>
+														<Menu.Item
+								icon="beer"
+								name="my reviews"
+								active={activeItem === 'my reviews'}
+								onClick={this.handleItemClick}
+							/>
+														<Menu.Item
+								icon="write square"
+								name="my posts"
+								active={activeItem === 'my posts'}
 								onClick={this.handleItemClick}
 							/>
 							<Menu.Item

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function PostListItem({ item, userId }) {
+export default function PostListItem({ item }) {
 	return (
 		<div key={item.content ? `post-${item.id}` : `review-${item.id}`}>
 			<h1>
