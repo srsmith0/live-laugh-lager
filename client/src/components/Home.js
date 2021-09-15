@@ -9,6 +9,10 @@ function Home(props) {
 	const [openRegister, setOpenRegister] = useState(false);
 	const [openLogin, setOpenLogin] = useState(false);
 
+	const handleDemo = () => {
+		props.auth.handleLogin({ email: "1-test@test.com", password: 123456 }, props.history);
+	}
+
 	return (
 		<div className="background">
 			<h1 className="title">Live, Laugh, Lager</h1>
@@ -50,7 +54,7 @@ function Home(props) {
 								</Modal.Content>
 							</Modal>
 							<Button
-								onClick={() => props.auth.handleLogin(process.env.REACT_APP_DEMO_EMAIL, process.env.REACT_APP_DEMO_PASSWORD)}
+								onClick={() => handleDemo()}
 								size="huge"
 								color="yellow"
 							>
