@@ -11,7 +11,7 @@ function Home(props) {
 
 	const handleDemo = (e) => {
 		e.preventDefault();
-		props.auth.handleLogin({ email: "1-test@test.com", password: 123456 }, props.history);
+		props.auth.handleLogin({ email: "1-test@test.com", password: "123456" }, props.history);
 	}
 
 	return (
